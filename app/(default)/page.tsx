@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Home - Open PRO",
-  description: "Page description",
+  title: "Kytzo - AI Automation Solutions",
+  description: "We optimize processes, automate workflows, and elevate businesses with intelligent AI solutions.",
 };
 
 import PageIllustration from "@/components/page-illustration";

@@ -21,7 +21,10 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
   useEffect(() => {
     // This script will run after the component mounts and ThreeJS has loaded
     const script = document.createElement('script');
+    
+    // Use an IIFE (Immediately Invoked Function Expression) to create private scope
     script.innerHTML = `
+    (function() {
       // --- Three.js Global Variables ---
       let scene, camera, renderer, planeMesh;
       let terminalTexture, terminalCanvas, terminalCtx;
@@ -414,10 +417,20 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
       // Initialize when everything is loaded
       init();
       document.getElementById('hiddenInput').focus();
+    })();
     `;
     
     // Only append if the container exists and ThreeJS is loaded
     if (containerRef.current && window.THREE) {
+      // Check if a previous script exists and remove it first
+      const existingScript = document.getElementById('terminal-script');
+      if (existingScript) {
+        existingScript.remove();
+      }
+      
+      // Set an ID for easier reference/removal
+      script.id = 'terminal-script';
+      
       document.body.appendChild(script);
     }
 
