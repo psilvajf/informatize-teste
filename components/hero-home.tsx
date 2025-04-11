@@ -16,20 +16,20 @@ export default function HeroHome() {
             </h1>
             <div className="mx-auto max-w-3xl">
               <div className="flex flex-col items-center space-y-2 mb-6">
-                <p className="text-2xl text-indigo-300/90 font-semibold">Simplify Processes - Automate Solutions - Increase Revenue</p>
+                <p className="text-xl text-indigo-300/90 font-semibold">Simplify Processes - Automate Solutions - Increase Revenue</p>
               </div>
               <p
                 className="mb-8 text-xl text-indigo-200/65"
                 data-aos="fade-up"
                 data-aos-delay={200}
               >
-                Simplify operations and innovate with AI automation.
+                Boost efficiency and profitability through AI-powered automation.
               </p>
               <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
                 <div data-aos="fade-up" data-aos-delay={400}>
                   <a
                     className="btn group mb-4 w-full bg-linear-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16)] hover:bg-[length:100%_150%] sm:mb-0 sm:w-auto"
-                    href="#0"
+                    href="mailto:claudio@kytzo.com?subject=Contact - Kytzo"
                   >
                     <span className="relative inline-flex items-center">
                       CONTACT US
