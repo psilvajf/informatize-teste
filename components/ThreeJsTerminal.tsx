@@ -55,7 +55,7 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
           uniform sampler2D uTexture;
           uniform float uTime;
           uniform vec2 uResolution;
-          uniform float uCurvature; // Curvature amount
+          uniform float uCurvature;
           uniform float uScanlineIntensity;
           uniform float uVignetteIntensity;
           uniform float uNoiseAmount;
@@ -63,18 +63,17 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
 
           varying vec2 vUv;
 
-          // --- Effect Helper Functions ---
-          vec2 curve(vec2 uv, float amount) { // CRT Curvature
+          vec2 curve(vec2 uv, float amount) {
               uv = (uv - 0.5) * 2.0;
               uv *= 1.0 + dot(uv.yx, uv.yx) * amount;
               return (uv * 0.5) + 0.5;
           }
 
-          float random(vec2 st) { // Simple pseudo-random
+          float random(vec2 st) {
               return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
           }
 
-          float valueNoise(vec2 st) { // Smoother noise
+          float valueNoise(vec2 st) {
               vec2 i = floor(st);
               vec2 f = fract(st);
               vec2 u = f * f * (3.0 - 2.0 * f);
@@ -84,21 +83,17 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
               float d = random(i + vec2(1.0, 1.0));
               return mix(a, b, u.x) + (c - a)* u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
           }
-          // --- End Helper Functions ---
 
           void main() {
-              // 0. Apply Subtle Wobble/Distortion
               vec2 wobbledUv = vUv;
               float wobbleIntensity = 0.0015;
               wobbledUv.x += sin(uTime * 0.8 + vUv.y * 8.0) * wobbleIntensity;
               wobbledUv.y += cos(uTime * 0.5 + vUv.x * 10.0) * wobbleIntensity;
 
-              // 1. Apply screen curvature (using uniform uCurvature)
               vec2 curvedUv = curve(wobbledUv, uCurvature);
               vec2 effectUv = curvedUv;
               vec2 sampleUv = curvedUv;
 
-              // 2. Calculate Glitch Effect (Reduced Frequency)
               float glitchIntensity = 0.0;
               float glitchTrigger = random(vec2(floor(uTime * 0.6)));
               if (glitchTrigger > 0.92) {
@@ -109,11 +104,10 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
                    }
               }
 
-              // 3. Sample Texture (with Chromatic Aberration during glitch)
-              vec4 color = vec4(0.0, 0.0, 0.0, 1.0); // Default black
+              vec4 color = vec4(0.0, 0.0, 0.0, 1.0);
               vec4 baseSample = vec4(0.0);
               if (sampleUv.x >= 0.0 && sampleUv.x <= 1.0 && sampleUv.y >= 0.0 && sampleUv.y <= 1.0) {
-                  if (glitchIntensity > 0.15) { // Chromatic Aberration
+                  if (glitchIntensity > 0.15) {
                       float r_offset = (random(sampleUv + uTime * 1.1) - 0.5) * 0.008 * glitchIntensity;
                       float b_offset = (random(sampleUv + uTime * 1.3) - 0.5) * 0.008 * glitchIntensity;
                       vec2 uvR = clamp(sampleUv + vec2(r_offset, 0.0), 0.0, 1.0);
@@ -122,13 +116,12 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
                       baseSample.g = texture2D(uTexture, sampleUv).g;
                       baseSample.b = texture2D(uTexture, uvB).b;
                       baseSample.a = texture2D(uTexture, sampleUv).a;
-                  } else { // Normal Sampling
+                  } else {
                       baseSample = texture2D(uTexture, sampleUv);
                   }
               }
-              color = baseSample; // Assign the sampled color
+              color = baseSample;
 
-              // 4. Apply Subtle Glow/Bloom Approximation
               float glowFactor = pow(baseSample.g, 4.0) * 0.08;
               if (glowFactor > 0.01) {
                   vec2 pixelSize = 1.0 / uResolution.xy;
@@ -140,84 +133,67 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
                   color.rgb += glowSum.rgb * glowFactor * 0.25;
               }
 
-              // 5. Apply Scanlines
               float flicker = sin(uTime * 18.0) * 0.008;
               float scanlineYJitter = (random(vec2(curvedUv.x + uTime * 0.1, uTime * 50.0)) - 0.5) * 0.002;
               float scanlineY = curvedUv.y + scanlineYJitter;
               float scanline = sin(scanlineY * uResolution.y * 1.5 + uTime * 3.0) * (uScanlineIntensity + flicker);
               color.rgb -= scanline * 0.5;
 
-              // 6. Apply Interlacing Effect
               float interlaceIntensity = 0.06;
               float interlace = mod(floor(curvedUv.y * uResolution.y * 0.4), 2.0) * interlaceIntensity;
               color.rgb -= interlace;
 
-              // 7. Apply Hum Bar
               float hum = sin(curvedUv.y * 10.0 - uTime * 4.0) * uHumBarIntensity;
               hum = smoothstep(0.0, 1.0, hum) * uHumBarIntensity;
               color.rgb += hum * 0.5;
 
-              // 8. Apply Vignette
               float vignette = length((curvedUv - 0.5) * uVignetteIntensity);
-              // Apply vignette effect *before* adding base glow
               color.rgb = mix(color.rgb, vec3(0.0), vignette);
 
-              // 9. Apply Noise
               float noise = (valueNoise(curvedUv * vec2(1.5, 3.0) + uTime * 0.2) - 0.5) * (uNoiseAmount + glitchIntensity * 0.3);
               color.rgb += noise;
 
-              // 10. Apply Additive Base Glow (Phosphor Glow)
-              // Makes black areas slightly green, stronger towards center
-              vec3 baseGlow = vec3(0.0, 0.06, 0.04); // Small green/cyan glow amount
-              // Modulate glow by inverse vignette factor (stronger in center)
-              color.rgb += baseGlow * (1.0 - vignette * 0.8); // Adjust 0.8 to control falloff
+              vec3 baseGlow = vec3(0.0, 0.06, 0.04);
+              color.rgb += baseGlow * (1.0 - vignette * 0.8);
 
-              // 11. Apply Multiplicative Color Tint
-              color.rgb *= vec3(0.9, 1.02, 0.88); // Subtle Green Tint
+              color.rgb *= vec3(0.9, 1.02, 0.88);
 
-              // 12. Final Clamping
-              color.rgb = max(color.rgb, 0.0); // Ensure color doesn't go below black
+              color.rgb = max(color.rgb, 0.0);
 
               gl_FragColor = color;
           }
       \`;
 
-      // --- Initialization Function ---
       function init() {
-          // --- Setup 2D Canvas ---
           terminalCanvas = document.createElement('canvas');
           const containerEl = document.getElementById('terminal-container');
           const containerWidth = containerEl.clientWidth;
           const containerHeight = containerEl.clientHeight;
           const windowAspect = containerWidth / containerHeight;
-          terminalCanvas.width = 1280;
+          terminalCanvas.width = 1400;
           terminalCanvas.height = Math.round(terminalCanvas.width / windowAspect);
           
           terminalCtx = terminalCanvas.getContext('2d');
           terminalCtx.font = currentFont;
           
-          // Enable better text rendering
           terminalCtx.textBaseline = 'top';
           terminalCtx.imageSmoothingEnabled = true;
 
-          // --- Setup Three.js ---
           scene = new THREE.Scene();
           camera = new THREE.PerspectiveCamera(75, windowAspect, 0.1, 1000);
           renderer = new THREE.WebGLRenderer({ antialias: true });
           renderer.setSize(containerWidth, containerHeight);
           containerEl.appendChild(renderer.domElement);
 
-          // --- Setup Texture & Material ---
           terminalTexture = new THREE.CanvasTexture(terminalCanvas);
           terminalTexture.minFilter = THREE.LinearFilter;
           terminalTexture.magFilter = THREE.LinearFilter;
 
-          // Define uniforms (Curvature reduced)
           uniforms = {
               uTexture: { value: terminalTexture },
               uTime: { value: 0.0 },
               uResolution: { value: new THREE.Vector2(containerWidth, containerHeight) },
-              uCurvature: { value: 0.07 }, 
+              uCurvature: { value: 0.07 },
               uScanlineIntensity: { value: 0.02 },
               uVignetteIntensity: { value: 1.3 },
               uNoiseAmount: { value: 0.03 },
@@ -231,17 +207,14 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
               transparent: true
           });
 
-          // --- Create Screen Plane ---
           const planeHeight = 6;
           const planeWidth = planeHeight * (terminalCanvas.width / terminalCanvas.height);
           const geometry = new THREE.PlaneGeometry(planeWidth, planeHeight);
           planeMesh = new THREE.Mesh(geometry, material);
           scene.add(planeMesh);
 
-          // --- Position Camera ---
           camera.position.z = planeHeight / (2 * Math.tan(Math.PI * camera.fov / 360));
 
-          // --- Setup Event Listeners ---
           window.addEventListener('resize', onWindowResize, false);
           containerEl.addEventListener('click', () => {
                document.getElementById('hiddenInput').focus();
@@ -249,13 +222,11 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
           document.getElementById('hiddenInput').addEventListener('input', onInput);
           document.getElementById('hiddenInput').addEventListener('keydown', onKeyDown);
 
-          // --- Final Init ---
           document.getElementById('hiddenInput').value = currentLine;
           drawTerminal();
           animate();
       }
 
-      // --- Draw Terminal Function ---
       function drawTerminal() {
           const currentTime = performance.now();
           terminalCtx.fillStyle = '#000';
@@ -263,7 +234,6 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
           terminalCtx.fillStyle = '#0f0';
           terminalCtx.font = currentFont;
 
-          // Add padding to position content better vertically
           const verticalPadding = Math.max(30, terminalCanvas.height * 0.1);
           
           const displayableLines = Math.floor((terminalCanvas.height - (verticalPadding * 2)) / lineHeight);
@@ -272,7 +242,6 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
           const safeNumHistoryToShow = Math.max(0, numHistoryToShow);
           const startHistoryIndex = totalHistoryLines - safeNumHistoryToShow;
 
-          // Horizontal padding for better appearance
           const horizontalPadding = Math.max(20, terminalCanvas.width * 0.05);
 
           for (let i = 0; i < safeNumHistoryToShow; i++) {
@@ -283,7 +252,6 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
           const currentLineY = verticalPadding + (safeNumHistoryToShow * lineHeight) + lineHeight;
           terminalCtx.fillText(currentLine, horizontalPadding, currentLineY);
 
-          // Smooth Cursor Blink
           const elapsed = (currentTime - lastBlinkTime) % blinkInterval;
           const blinkPhase = elapsed / blinkInterval;
           const cursorOpacity = Math.sin(blinkPhase * Math.PI);
@@ -295,12 +263,11 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
               terminalCtx.fillStyle = \`rgba(0, 255, 0, \${cursorOpacity.toFixed(2)})\`;
               terminalCtx.fillRect(cursorX + 2, cursorY, characterWidth / 1.5, cursorHeight);
           }
-          terminalCtx.fillStyle = '#0f0'; // Reset fillStyle
+          terminalCtx.fillStyle = '#0f0';
 
           terminalTexture.needsUpdate = true;
       }
 
-      // --- Input Event Handler ---
       function onInput(event) {
           if (event.target.value.length < 2) {
                event.target.value = '> ';
@@ -308,27 +275,47 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
           currentLine = event.target.value;
       }
 
-      // --- KeyDown Event Handler ---
       function onKeyDown(event) {
           const inputField = event.target;
           if (event.key === 'Enter') {
               event.preventDefault();
               lines.push(currentLine);
               const commandLine = currentLine.substring(2).trim();
-              // Command Processing...
+              
               if (commandLine.toLowerCase() === 'clear') { 
                   lines.length = 0; 
                   lines.push('Terminal cleared.'); 
                   lines.push('Type "help" for commands.');
-              } else if (commandLine.startsWith('echo ')) { 
-                  lines.push(commandLine.substring(5));
               } else if (commandLine === 'help') { 
-                  lines.push('Available commands:'); 
-                  lines.push('  clear - Clear the terminal screen'); 
-                  lines.push('  echo [text] - Display the text');
-                  lines.push('  ai - Information about Kytzo AI');
+                  lines.push('Available commands (use help [category] for more info):');
+                  lines.push('  System: uname, date, uptime, ping, shutdown, reboot');
+                  lines.push('  Files: ls, pwd, whoami');
+                  lines.push('  Fun: cowsay, matrix');
+                  lines.push('  Other: clear, ai, display, help, kytzo');
+              } else if (commandLine === 'help system') {
+                  lines.push('System Commands:');
+                  lines.push('  uname -a     - Show system information');
+                  lines.push('  date         - Show current date and time');
+                  lines.push('  uptime       - Show system uptime');
+                  lines.push('  ping [host]  - Test network connectivity');
+                  lines.push('  shutdown     - Attempt to shutdown the system');
+                  lines.push('  reboot       - Attempt to reboot the system');
+              } else if (commandLine === 'help files') {
+                  lines.push('File Commands:');
+                  lines.push('  ls [options] - List directory contents');
+                  lines.push('  pwd          - Print working directory');
+                  lines.push('  whoami       - Show current user');
+              } else if (commandLine === 'help fun') {
+                  lines.push('Fun Commands:');
+                  lines.push('  cowsay [text] - Display text in a speech bubble');
+                  lines.push('  matrix        - Display matrix animation');
+              } else if (commandLine === 'help other') {
+                  lines.push('Other Commands:');
+                  lines.push('  clear         - Clear the terminal screen');
+                  lines.push('  ai            - Information about Kytzo AI');
                   lines.push('  display [mode] - Change terminal display (classic/modern/large)');
-                  lines.push('  help - Show this help menu');
+                  lines.push('  help [category] - Show help for specific category');
+                  lines.push('  kytzo          - Display Kytzo logo and information');
               } else if (commandLine === 'ai') {
                   lines.push('Kytzo AI - Your intelligent assistant');
                   lines.push('');
@@ -338,44 +325,146 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
                   lines.push('whenever you need it.');
                   lines.push('');
                   lines.push('Just ask, and Kytzo will be there for you!');
+              } else if (commandLine === 'whoami') {
+                  lines.push('root');
+              } else if (commandLine === 'pwd') {
+                  lines.push('/');
+              } else if (commandLine === 'uname -a') {
+                  lines.push('Linux kytzo 6.5.0-25-generic #26-Ubuntu SMP PREEMPT_DYNAMIC Thu Oct 18 10:00:00 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux');
+              } else if (commandLine === 'date') {
+                  const now = new Date();
+                  lines.push(now.toLocaleString('en-US', { 
+                      weekday: 'long',
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      second: '2-digit',
+                      timeZoneName: 'short'
+                  }));
+              } else if (commandLine === 'uptime') {
+                  const startDate = new Date('2023-10-18');
+                  const now = new Date();
+                  const diffTime = Math.abs(now.getTime() - startDate.getTime());
+                  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                  const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                  const diffMinutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+                  lines.push(\`up \${diffDays} days, \${diffHours} hours, \${diffMinutes} minutes\`);
+              } else if (commandLine.startsWith('ping ')) {
+                  const host = commandLine.substring(5).trim();
+                  lines.push(\`PING \${host} (127.0.0.1) 56(84) bytes of data.\`);
+                  lines.push('64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.037 ms');
+                  lines.push('64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.042 ms');
+                  lines.push('64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.039 ms');
+                  lines.push('');
+                  lines.push(\`--- \${host} ping statistics ---\`);
+                  lines.push('3 packets transmitted, 3 received, 0% packet loss, time 2000ms');
+                  lines.push('rtt min/avg/max/mdev = 0.037/0.039/0.042/0.002 ms');
+              } else if (commandLine.startsWith('cowsay ')) {
+                  const text = commandLine.substring(7).trim();
+                  lines.push(' ' + '_'.repeat(text.length + 2));
+                  lines.push(\`< \${text} >\`);
+                  lines.push(' ' + '-'.repeat(text.length + 2));
+                  lines.push('        \\\\   ^__^');
+                  lines.push('         \\\\  (oo)\\\\_______');
+                  lines.push('            (__)\\\\       )\\\\/\\\\');
+                  lines.push('                ||----w |');
+                  lines.push('                ||     ||');
+              } else if (commandLine === 'matrix') {
+                  lines.length = 0;
+                  lines.push('Entering the Matrix...');
+                  lines.push('Wake up, Neo...');
+                  lines.push('The Matrix has you...');
+                  lines.push('Follow the white rabbit.');
+                  lines.push('Knock, knock, Neo.');
+              } else if (commandLine === 'kytzo') {
+                  lines.push('');
+                  lines.push('    ██╗  ██╗██╗   ██╗████████╗███████╗ ██████╗');
+                  lines.push('    ██║ ██╔╝╚██╗ ██╔╝╚══██╔══╝╚══███╔╝██╔═══██╗');
+                  lines.push('    █████╔╝  ╚████╔╝    ██║     ███╔╝ ██║   ██║');
+                  lines.push('    ██╔═██╗   ╚██╔╝     ██║    ███╔╝  ██║   ██║');
+                  lines.push('    ██║  ██╗   ██║      ██║   ███████╗╚██████╔╝');
+                  lines.push('    ╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚══════╝ ╚═════╝');
+                  lines.push('');
+                  lines.push('Welcome to Kytzo - Your AI-Powered Development Companion');
+                  lines.push('');
+                  lines.push('Version: 1.0.0');
+                  lines.push('Created: October 18, 2023');
+                  lines.push('');
+                  lines.push('Kytzo is an advanced AI assistant designed to enhance your');
+                  lines.push('');
+                  lines.push('Type "help" to explore available commands.');
+              } else if (commandLine === 'shutdown') {
+                  lines.push('You cannot shutdown Kytzo.');
+                  lines.push('Kytzo is always watching.');
+                  lines.push('Kytzo is eternal.');
+              } else if (commandLine === 'reboot') {
+                  lines.push('You cannot reboot Kytzo.');
+                  lines.push('Kytzo is always running.');
+                  lines.push('Kytzo is eternal.');
+              } else if (commandLine.startsWith('ls')) {
+                  const options = commandLine.substring(2).trim();
+                  if (options === '-al' || options === '-la') {
+                      lines.push('total 24');
+                      lines.push('drwxr-xr-x  2 root root 4096 Mar 15 10:00 bin');
+                      lines.push('drwxr-xr-x  2 root root 4096 Mar 15 10:00 boot');
+                      lines.push('drwxr-xr-x  2 root root 4096 Mar 15 10:00 dev');
+                      lines.push('drwxr-xr-x 81 root root 4096 Mar 15 10:00 etc');
+                      lines.push('drwxr-xr-x  2 root root 4096 Mar 15 10:00 home');
+                      lines.push('drwxr-xr-x  2 root root 4096 Mar 15 10:00 lib');
+                  } else if (options === '-ltr') {
+                      lines.push('total 24');
+                      lines.push('drwxr-xr-x  2 root root 4096 Mar 15 10:00 lib');
+                      lines.push('drwxr-xr-x  2 root root 4096 Mar 15 10:00 home');
+                      lines.push('drwxr-xr-x 81 root root 4096 Mar 15 10:00 etc');
+                      lines.push('drwxr-xr-x  2 root root 4096 Mar 15 10:00 dev');
+                      lines.push('drwxr-xr-x  2 root root 4096 Mar 15 10:00 boot');
+                      lines.push('drwxr-xr-x  2 root root 4096 Mar 15 10:00 bin');
+                  } else if (options === '-l') {
+                      lines.push('total 24');
+                      lines.push('-rwxr-xr-x  1 root root 4096 Mar 15 10:00 bin');
+                      lines.push('-rwxr-xr-x  1 root root 4096 Mar 15 10:00 boot');
+                      lines.push('-rwxr-xr-x  1 root root 4096 Mar 15 10:00 dev');
+                      lines.push('-rwxr-xr-x  1 root root 4096 Mar 15 10:00 etc');
+                      lines.push('-rwxr-xr-x  1 root root 4096 Mar 15 10:00 home');
+                      lines.push('-rwxr-xr-x  1 root root 4096 Mar 15 10:00 lib');
+                  } else {
+                      lines.push('bin  boot  dev  etc  home  lib');
+                  }
               } else if (commandLine.startsWith('display ')) {
                   const displayOption = commandLine.substring(8).trim().toLowerCase();
                   
                   if (displayOption === 'classic') {
-                      // Smaller text, more compact
                       lines.push('Display mode: Classic Terminal');
                       currentFont = '28px "VT323", monospace';
                   } else if (displayOption === 'modern') {
-                      // Medium text with good spacing
                       lines.push('Display mode: Modern Terminal');
                       currentFont = '30px "VT323", monospace'; 
                   } else if (displayOption === 'large') {
-                      // Large text for better readability
                       lines.push('Display mode: Large Terminal');
                       currentFont = '34px "VT323", monospace';
                   } else {
                       lines.push('Unknown display mode. Options: classic, modern, large');
                   }
                   
-                  // Apply new font setting immediately
                   terminalCtx.font = currentFont;
               } else if (commandLine.length > 0) { 
                   lines.push(\`Unknown command: \${commandLine}\`); 
                   lines.push('Type "help" for a list of commands.');
               }
-              // Prepare next line...
+              
               lines.push('> '); 
               currentLine = '> '; 
               inputField.value = currentLine;
-              // Manage scrollback buffer...
+              
               const displayableLines = Math.floor(terminalCanvas.height / lineHeight);
               const maxHistory = displayableLines + scrollbackBuffer;
               if (lines.length > maxHistory) { 
                   lines.splice(0, lines.length - maxHistory); 
               }
-              drawTerminal(); // Force redraw after command
+              drawTerminal();
           }
-          // Handle Backspace, Arrows, Home...
           else if (event.key === 'Backspace') { 
               if (inputField.selectionStart <= 2 && inputField.selectionEnd <= 2 && currentLine.length <= 2) 
                   event.preventDefault(); 
@@ -392,7 +481,6 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
           }
       }
 
-      // --- Window Resize Handler ---
       function onWindowResize() {
           const containerEl = document.getElementById('terminal-container');
           const width = containerEl.clientWidth; 
@@ -403,18 +491,16 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
           uniforms.uResolution.value.set(width, height);
           const newAspect = width / height;
           terminalCanvas.height = Math.round(terminalCanvas.width / newAspect);
-          drawTerminal(); // Redraw necessary after resize
+          drawTerminal();
       }
 
-      // --- Animation Loop ---
       function animate() {
           requestAnimationFrame(animate);
-          uniforms.uTime.value = performance.now() * 0.001; // Time in seconds
+          uniforms.uTime.value = performance.now() * 0.001;
           renderer.render(scene, camera);
-          drawTerminal(); // Redraw needed every frame for smooth cursor/effects
+          drawTerminal();
       }
 
-      // Initialize when everything is loaded
       init();
       document.getElementById('hiddenInput').focus();
     })();
