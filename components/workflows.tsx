@@ -29,22 +29,13 @@ export default function Workflows() {
                 AI DEVELOPMENT
               </h3>
               <p className="mb-4 text-indigo-200/65">
-                We craft intelligent solutions tailored for businesses, including custom chatbots, AI tools, and seamless integrations. Our offerings drive growth, optimize processes, and enhance communication, elevating your business and amplifying your impact.
+                We craft intelligent solutions powered by OpenAI, Claude, and Gemini, deployed on AWS and Cloudflare infrastructure. Our cloud-native AI tools and custom chatbots leverage RAG and the latest in large language models, driving growth and enhancing communication.
               </p>
               <ul className="space-y-2 text-indigo-200/65">
                 <li>• Custom AI Chatbots</li>
-                <li>• AI-Powered Tools</li>
+                <li>• RAG-Powered Solutions</li>
                 <li>• Process Automation</li>
               </ul>
-              <a
-                className="mt-4 inline-flex items-center text-sm font-medium text-indigo-500 hover:text-indigo-400"
-                href="#0"
-              >
-                LEARN MORE
-                <span className="ml-1 tracking-normal transition-transform group-hover:translate-x-0.5">
-                  →
-                </span>
-              </a>
             </div>
 
             {/* 2nd service */}
@@ -53,22 +44,13 @@ export default function Workflows() {
                 AUTOMATION
               </h3>
               <p className="mb-4 text-indigo-200/65">
-                We specialize in creating powerful automation workflows using n8n and MCP to streamline your business processes. Our solutions help you automate repetitive tasks, integrate various systems, and create efficient workflows that save time and reduce errors.
+                We specialize in creating powerful automation workflows using n8n and MCP in the cloud. Our cloud-native solutions help you automate tasks, integrate systems, and create efficient workflows that scale seamlessly.
               </p>
               <ul className="space-y-2 text-indigo-200/65">
                 <li>• n8n Workflow Automation</li>
                 <li>• MCP Integration</li>
                 <li>• System Integration</li>
               </ul>
-              <a
-                className="mt-4 inline-flex items-center text-sm font-medium text-indigo-500 hover:text-indigo-400"
-                href="#0"
-              >
-                LEARN MORE
-                <span className="ml-1 tracking-normal transition-transform group-hover:translate-x-0.5">
-                  →
-                </span>
-              </a>
             </div>
 
             {/* 3rd service */}
@@ -77,22 +59,13 @@ export default function Workflows() {
                 AGENTS
               </h3>
               <p className="mb-4 text-indigo-200/65">
-                Our AI agents are designed to handle complex tasks and decision-making processes. These intelligent systems can work autonomously, learn from interactions, and provide valuable insights to help your business make data-driven decisions.
+                Our AI agents, built with OpenAI, Claude, and Gemini APIs, are designed to handle complex tasks and decision-making processes. These cloud-powered intelligent systems ensure reliable performance and global scalability.
               </p>
               <ul className="space-y-2 text-indigo-200/65">
                 <li>• Autonomous AI Agents</li>
                 <li>• Task Automation</li>
                 <li>• Intelligent Decision Making</li>
               </ul>
-              <a
-                className="mt-4 inline-flex items-center text-sm font-medium text-indigo-500 hover:text-indigo-400"
-                href="#0"
-              >
-                LEARN MORE
-                <span className="ml-1 tracking-normal transition-transform group-hover:translate-x-0.5">
-                  →
-                </span>
-              </a>
             </div>
           </div>
         </div>
