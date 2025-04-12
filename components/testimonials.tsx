@@ -14,18 +14,18 @@ const testimonials = [
   {
     img: TestimonialImg01,
     clientImg: ClientImg01,
-    name: "Carl Åhslund",
-    company: "CEO Open Infra US",
+    name: "Sampei Omichi",
+    company: "CEO Ellis",
     content:
-      "We were able to launch the first version of the system within a few months which was a great achievement from the whole team. Following the initial launch we have continued with improvement iterations and build additional features and modules making the system more complex. There was a great overall communication with the whole team. I appreciate their creativity and strong understanding of our business needs.",
+      "WIP",
   },
   {
     img: TestimonialImg02,
     clientImg: ClientImg02,
-    name: "Cees De Wit",
-    company: "Partner",
+    name: "Horacio Lopez",
+    company: "Business Operations at Replit",
     content:
-      "The most impressive was the capability to understand our requirements, which are coming from a specific industry, and build the software from start to finish and incorporating all of our conditions. Furthermore, the team has a broad skillset and is able to fix any problems that come up during development. Lastly, they are a friendly and hardworking team that listen to feedback and make sure delivery is guaranteed. Overall, they are a pleasure to work with.",
+      "Claudio (Kytzo's founder) was the world top-earning developer on the Bounties platform which is a testament for how dependable, thorough, and technical he is as a developer.",
   },
   {
     img: TestimonialImg03,

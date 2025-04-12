@@ -234,7 +234,7 @@ export default function ThreeJsTerminal({ width, height }: ThreeJsTerminalProps)
           terminalCtx.fillStyle = '#0f0';
           terminalCtx.font = currentFont;
 
-          const verticalPadding = Math.max(30, terminalCanvas.height * 0.1);
+          const verticalPadding = Math.max(15, terminalCanvas.height * 0.05);
           
           const displayableLines = Math.floor((terminalCanvas.height - (verticalPadding * 2)) / lineHeight);
           const totalHistoryLines = lines.length;
