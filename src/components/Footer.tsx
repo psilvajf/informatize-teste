@@ -1,19 +1,20 @@
-import { LogoIcon } from "./Icons";
+import {
+  InstagramLogoIcon,
+  TwitterLogoIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
 
 export const Footer = () => {
   return (
-    <footer id="footer">
-      <hr className="w-11/12 mx-auto" />
-
-      <section className="container py-20 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
+    <footer id="footer" className="bg-card">
+      <section className="container max-w-6xl py-20 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
         <div className="col-span-full xl:col-span-2">
           <a
             rel="noreferrer noopener"
             href="/"
-            className="font-bold text-xl flex"
+            className="font-bold text-xl flex text-primary"
           >
-            <LogoIcon />
-            ShadcnUI/React
+            CAPES.APP
           </a>
         </div>
 
@@ -25,7 +26,7 @@ export const Footer = () => {
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Github
+              <InstagramLogoIcon className="w-6 h-6" />
             </a>
           </div>
 
@@ -35,7 +36,7 @@ export const Footer = () => {
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Twitter
+              <TwitterLogoIcon className="w-6 h-6" />
             </a>
           </div>
 
@@ -45,12 +46,12 @@ export const Footer = () => {
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Dribbble
+              <LinkedInLogoIcon className="w-6 h-6" />
             </a>
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
+        {/* <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Platforms</h3>
           <div>
             <a
@@ -81,14 +82,14 @@ export const Footer = () => {
               Desktop
             </a>
           </div>
-        </div>
+        </div> */}
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">About</h3>
+          <h3 className="font-bold text-lg">Resources</h3>
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="#features"
               className="opacity-60 hover:opacity-100"
             >
               Features
@@ -98,33 +99,33 @@ export const Footer = () => {
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="#services"
               className="opacity-60 hover:opacity-100"
             >
-              Pricing
+              offerings
             </a>
           </div>
 
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="#howItWorks"
               className="opacity-60 hover:opacity-100"
             >
-              FAQ
+              How it works
             </a>
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Community</h3>
+          <h3 className="font-bold text-lg">Legal</h3>
           <div>
             <a
               rel="noreferrer noopener"
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Youtube
+              Terms of Service
             </a>
           </div>
 
@@ -134,34 +135,16 @@ export const Footer = () => {
               href="#"
               className="opacity-60 hover:opacity-100"
             >
-              Discord
+              Privacy Policy
             </a>
           </div>
 
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Twitch
-            </a>
-          </div>
+          <div></div>
         </div>
       </section>
 
-      <section className="container pb-14 text-center">
-        <h3>
-          &copy; 2024 Landing page made by{" "}
-          <a
-            rel="noreferrer noopener"
-            target="_blank"
-            href="https://www.linkedin.com/in/leopoldo-miranda/"
-            className="text-primary transition-all border-primary hover:border-b-2"
-          >
-            Leo Miranda
-          </a>
-        </h3>
+      <section className="container pb-14 max-w-6xl">
+        <h3>&copy; 2025 CAPES.APP - All rights reserved.</h3>
       </section>
     </footer>
   );

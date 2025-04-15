@@ -29,7 +29,7 @@ interface FeatureProps {
 const features: FeatureProps[] = [
   {
     icon: LayoutDashboard,
-    title: "Client Management CRM Dashboard",
+    title: "Client Management Dashboard",
     description:
       "Manage your clients, leads, and projects all in one place. Replace your spreadsheets and scattered notes.",
     image: CRM,
@@ -46,14 +46,11 @@ const features: FeatureProps[] = [
 const featureList: string[] = [
   "Client Dashboard",
   "Offerings Management",
-  "Stats and Analytics",
   "Page Builder",
   "Community and Chat",
   "Payment Integration",
   "Calendar and Scheduling",
-  "Email and SMS Notifications",
-  "Custom Domain",
-  "Custom Branding",
+  "Stats and Analytics",
 ];
 
 export const Features = () => {
@@ -68,9 +65,9 @@ export const Features = () => {
           <span className=" inline-block rounded-full px-4 py-1.5 text-sm font-semibold border-[1px] border-primary/40  text-primary">
             Your own dashboard
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold md:text-center">
+          <h2 className="text-2xl md:text-5xl font-bold text-center">
             Your Whole Business in <br />
-            <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+            <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text leading-relaxed">
               One Dashboard
             </span>
           </h2>

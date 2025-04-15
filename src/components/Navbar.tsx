@@ -16,7 +16,6 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
 
 interface RouteProps {
   href: string;
@@ -29,12 +28,8 @@ const routeList: RouteProps[] = [
     label: "Features",
   },
   {
-    href: "#testimonials",
-    label: "Testimonials",
-  },
-  {
-    href: "#pricing",
-    label: "Pricing",
+    href: "#services",
+    label: "Offerings",
   },
   {
     href: "#faq",
@@ -45,17 +40,16 @@ const routeList: RouteProps[] = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <header className="sticky border-b-[0.5px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background py-3">
+    <header className="sticky border-b-[0.5px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background py-1">
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14  px-8 w-screen flex justify-between ">
           <NavigationMenuItem className="font-bold flex">
             <a
               rel="noreferrer noopener"
               href="/"
-              className="ml-2 font-bold text-xl flex"
+              className="ml-2 font-bold text-primary text-xl flex"
             >
-              <LogoIcon />
-              Capes
+              CAPES.APP
             </a>
           </NavigationMenuItem>
 

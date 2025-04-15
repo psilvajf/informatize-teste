@@ -39,12 +39,14 @@ const FeatureCard = ({ title, icon: Icon }: FeatureProps) => (
     className="transform-gpu"
   >
     <Card className="group duration-200 w-full h-full items-center bg-background border-none shadow-none">
-      <CardHeader className="flex flex-row gap-3">
+      <CardHeader className="flex flex-row items-center gap-3">
         <div className=" bg-primary/10  rounded-lg p-2 flex items-center justify-center w-10 h-10">
           <Icon className="text-primary size-6" />
         </div>
 
-        <CardTitle className="text-xl text-muted-foreground">{title}</CardTitle>
+        <CardTitle className="text-base md:text-lg text-muted-foreground">
+          {title}
+        </CardTitle>
       </CardHeader>
     </Card>
   </motion.div>
@@ -59,9 +61,6 @@ export const FeaturesVideoCalling = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="flex flex-col items-center justify-center gap-4 pb-20">
-            <span className="mb-4 inline-block rounded-full px-4 py-1.5 text-sm font-semibold border-[1px] border-primary/40  text-primary">
-              Powerful Features
-            </span>
             {/* <p className="text-center text-lg text-gray-600 dark:text-gray-400">
               Manage and schedule all your video calls, voice calls and group
               sessions seamlessly with custom payment integrations and
@@ -74,7 +73,12 @@ export const FeaturesVideoCalling = () => {
               className="w-full"
             />
             <div className="grid grid-row-1 md:grid-row-2 gap-4">
-              <h2 className="text-4xl font-bold">
+              <div className="flex flex-col items-start">
+                <span className="mb-4 inline-block rounded-full px-4 py-1.5 text-sm font-semibold border-[1px] border-primary/40  text-primary">
+                  Features
+                </span>
+              </div>
+              <h2 className="text-2xl md:text-4xl font-bold">
                 Video, Voice, Group Sessions all in one platform.
               </h2>
               <p className="text-base text-gray-600 dark:text-gray-400">

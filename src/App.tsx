@@ -5,7 +5,6 @@ import {
   Features,
   Services,
   Cta,
-  Newsletter,
   FAQ,
   Footer,
   ScrollToTop,
@@ -28,7 +27,7 @@ function App() {
       {/* <Testimonials /> */}
       {/* <Team /> */}
       {/* <Pricing /> */}
-      <Newsletter />
+      {/* <Newsletter /> */}
       <FAQ />
       <Footer />
       <ScrollToTop />

@@ -55,7 +55,7 @@ const features: ServiceProps[] = [
     backgroundColor: "bg-pink-500/10",
   },
   {
-    title: "Payments",
+    title: "Payments & Subscriptions",
     description:
       "Create and accept payments, manage subscriptions for your products and services.",
     icon: Banknote,
@@ -93,7 +93,7 @@ const ServiceCard = ({
 
 export const Services = () => {
   return (
-    <section id="features" className=" my-20">
+    <section id="services" className=" my-20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -104,15 +104,15 @@ export const Services = () => {
             <span className="mb-4 inline-block rounded-full px-4 py-1.5 text-sm font-semibold border-[1px] border-primary/40  text-primary">
               Offerings
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold md:text-center">
-              Offerings for every niche.
+            <h2 className="text-2xl md:text-5xl font-bold md:text-center">
+              Offerings for every need.
             </h2>
-            <p className="text-center text-lg text-gray-600 dark:text-gray-400">
+            <p className="text-center text-base md:text-lg text-gray-600 dark:text-gray-400">
               Fully integrated services and products you can start offering in
               minutes
             </p>
           </div>
-          <div className="mx-auto grid max-w-5xl gap-8 grid-cols-2">
+          <div className="mx-auto grid max-w-5xl gap-4 md:gap-8 grid-cols-2">
             {features.map((feature, index) => (
               <ServiceCard key={index} {...feature} />
             ))}
