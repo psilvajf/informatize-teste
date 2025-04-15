@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { DatabaseZap, NotebookPen, Shell, LucideIcon } from "lucide-react";
+import { LucideIcon, Undo2, UserRoundCheck, Users } from "lucide-react";
 import featuresImage from "@/assets/Video Calling.png";
 // import { Button } from "@/components/ui/button";
 
@@ -14,15 +14,15 @@ interface FeatureProps {
 const features: FeatureProps[] = [
   {
     title: "Replace Zoom and Meet",
-    icon: DatabaseZap,
+    icon: Undo2,
   },
   {
     title: "Manage 1-1 Consultations and appointments",
-    icon: NotebookPen,
+    icon: UserRoundCheck,
   },
   {
     title: "Conduct live webinars, workshops and classes",
-    icon: Shell,
+    icon: Users,
   },
   // {
   //   description:
@@ -38,20 +38,20 @@ const FeatureCard = ({ title, icon: Icon }: FeatureProps) => (
     transition={{ type: "spring", stiffness: 300 }}
     className="transform-gpu"
   >
-    <Card className="group transition-shadow duration-200 w-full h-full items-center bg-background border-none">
+    <Card className="group duration-200 w-full h-full items-center bg-background border-none shadow-none">
       <CardHeader className="flex flex-row gap-3">
         <div className=" bg-primary/10  rounded-lg p-2 flex items-center justify-center w-10 h-10">
           <Icon className="text-primary size-6" />
         </div>
 
-        <CardTitle className="text-xl">{title}</CardTitle>
+        <CardTitle className="text-xl text-muted-foreground">{title}</CardTitle>
       </CardHeader>
     </Card>
   </motion.div>
 );
 export const FeaturesVideoCalling = () => {
   return (
-    <section className="py-20 bg-card rounded-t-[40px]">
+    <section className="py-20 bg-card rounded-t-[40px]" id="features">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -1,14 +1,10 @@
 import {
   Navbar,
   Hero,
-  About,
   HowItWorks,
   Features,
   Services,
   Cta,
-  Testimonials,
-  Team,
-  Pricing,
   Newsletter,
   FAQ,
   Footer,
@@ -23,9 +19,9 @@ function App() {
       <Navbar />
       <Hero />
       {/* <Sponsors /> */}
+      <Features />
       <FeaturesVideoCalling />
       {/* <About /> */}
-      <Features />
       <Services />
       <HowItWorks />
       <Cta />

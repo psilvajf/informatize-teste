@@ -6,11 +6,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import image from "../assets/growth.png";
-import image3 from "../assets/reflecting.png";
-import image4 from "../assets/looking-ahead.png";
-
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+// import image from "../assets/growth.png";
+import CRM from "../assets/CRM.jpg";
+import Chat from "../assets/Chat.jpg";
+import heroImage from "../assets/Dashboard.jpg";
+import { motion } from "framer-motion";
+import { LucideIcon, LayoutDashboard, MessageSquareMore } from "lucide-react";
 interface FeatureProps {
+  icon: LucideIcon;
   title: string;
   description: string;
   image: string;
@@ -18,82 +28,113 @@ interface FeatureProps {
 
 const features: FeatureProps[] = [
   {
-    title: "Responsive Design",
+    icon: LayoutDashboard,
+    title: "Client Management CRM Dashboard",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image4,
+      "Manage your clients, leads, and projects all in one place. Replace your spreadsheets and scattered notes.",
+    image: CRM,
   },
   {
-    title: "Intuitive user interface",
+    icon: MessageSquareMore,
+    title: "Community and Chat Support",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image3,
-  },
-  {
-    title: "AI-Powered insights",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image,
+      "Create a community for your clients and provide them with chat support. Build a community around your offerings.",
+    image: Chat,
   },
 ];
 
 const featureList: string[] = [
-  "Dark/Light theme",
-  "Reviews",
-  "Features",
-  "Pricing",
-  "Contact form",
-  "Our team",
-  "Responsive design",
-  "Newsletter",
-  "Minimalist",
+  "Client Dashboard",
+  "Offerings Management",
+  "Stats and Analytics",
+  "Page Builder",
+  "Community and Chat",
+  "Payment Integration",
+  "Calendar and Scheduling",
+  "Email and SMS Notifications",
+  "Custom Domain",
+  "Custom Branding",
 ];
 
 export const Features = () => {
   return (
-    <section
-      id="features"
-      className="container py-24 sm:py-32 space-y-8"
-    >
-      <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
-        Many{" "}
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Great Features
-        </span>
-      </h2>
+    <section className="container py-24 sm:py-32 mx-auto px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <div className="flex flex-col items-center gap-10">
+          <span className=" inline-block rounded-full px-4 py-1.5 text-sm font-semibold border-[1px] border-primary/40  text-primary">
+            Your own dashboard
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold md:text-center">
+            Your Whole Business in <br />
+            <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+              One Dashboard
+            </span>
+          </h2>
 
-      <div className="flex flex-wrap md:justify-center gap-4">
-        {featureList.map((feature: string) => (
-          <div key={feature}>
-            <Badge
-              variant="secondary"
-              className="text-sm"
-            >
-              {feature}
-            </Badge>
-          </div>
-        ))}
-      </div>
+          <Carousel className="mx-auto max-w-5xl flex flex-wrap md:justify-center gap-2">
+            <CarouselContent className="-ml-1">
+              {featureList.map((feature: string) => (
+                <CarouselItem key={feature} className="basis-1/8">
+                  <Badge
+                    variant="secondary"
+                    className="text-sm px-6 py-2 rounded-md"
+                  >
+                    {feature}
+                  </Badge>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+          {/* <Button className=" text-base">Get Started</Button> */}
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {features.map(({ title, description, image }: FeatureProps) => (
-          <Card key={title}>
-            <CardHeader>
-              <CardTitle>{title}</CardTitle>
-            </CardHeader>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1, ease: "easeOut" }}
+            className="mx-auto my-4 flex items-center justify-center"
+          >
+            <img
+              src={heroImage}
+              alt="dashboard"
+              className="rounded-3xl"
+              width={1200} // Use a reasonably large number // Maintain aspect ratio// This Tailwind class will make it take full container width
+            />
+          </motion.div>
+        </div>
+        <div className="mx-auto max-w-6xl grid md:grid-cols-2 pt-10">
+          {features.map(
+            ({ title, description, image, icon: Icon }: FeatureProps) => (
+              <Card
+                key={title}
+                className="bg-transparent border-none shadow-none"
+              >
+                <CardHeader>
+                  <img
+                    src={image}
+                    alt={title}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                  <CardTitle className="flex items-center gap-3 pt-6">
+                    <Icon />
+                    {title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-muted-foreground">
+                  {description}
+                </CardContent>
 
-            <CardContent>{description}</CardContent>
-
-            <CardFooter>
-              <img
-                src={image}
-                alt="About feature"
-                className="w-[200px] lg:w-[300px] mx-auto"
-              />
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
+                <CardFooter></CardFooter>
+              </Card>
+            )
+          )}
+        </div>
+      </motion.div>
     </section>
   );
 };
