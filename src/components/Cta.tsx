@@ -4,7 +4,7 @@ export const Cta = () => {
   return (
     <section
       id="cta"
-      className="py-16 my-24 sm:my-20 max-w-6xl mx-auto px-4 rounded-3xl bg-primary/5"
+      className="py-16 mb-24 sm:mb-20 max-w-6xl mx-auto px-4 rounded-3xl bg-primary/5"
     >
       <div className="container lg:grid lg:grid-cols-2 place-items-center">
         <div className="lg:col-start-1">
@@ -19,7 +19,8 @@ export const Cta = () => {
           <p className="text-muted-foreground text-base md:text-xl mt-4 mb-8 lg:mb-0 leading-normal">
             {/* Let's remove all the manuals.
             <br /> */}
-            Join <b>CAPES.APP</b> and start offering 1:1 sessions that flows.
+            Join <b>CAPES.APP</b> and stop wasting time and effort managing
+            everthing manually — focus on what you love doing most.
           </p>
           <div className="space-y-4 md:space-y-8 lg:col-start-2">
             <Button className="w-full md:mr-4 md:w-auto">Start now</Button>

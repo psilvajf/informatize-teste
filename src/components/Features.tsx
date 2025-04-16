@@ -19,6 +19,7 @@ import Chat from "../assets/Chat.jpg";
 import heroImage from "../assets/Dashboard.jpg";
 import { motion } from "framer-motion";
 import { LucideIcon, LayoutDashboard, MessageSquareMore } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 interface FeatureProps {
   icon: LucideIcon;
   title: string;
@@ -54,6 +55,7 @@ const featureList: string[] = [
 ];
 
 export const Features = () => {
+  const isMobile = useIsMobile();
   return (
     <section className="container py-24 sm:py-32 mx-auto px-4">
       <motion.div
@@ -71,11 +73,13 @@ export const Features = () => {
               One Dashboard
             </span>
           </h2>
-
-          <Carousel className="mx-auto max-w-5xl flex flex-wrap md:justify-center">
+          <Carousel className="mx-auto w-full md:max-w-5xl flex flex-wrap md:justify-center">
             <CarouselContent className="-ml-1">
               {featureList.map((feature: string) => (
-                <CarouselItem key={feature} className="basis-1/10 md:basis-1/8">
+                <CarouselItem
+                  key={feature}
+                  className="basis-1/10 md:basis-1/8 pl-2 md:pl-4"
+                >
                   <Badge
                     variant="secondary"
                     className="text-xs md:text-sm px-4 md:px-6 py-2 rounded-md"
@@ -85,8 +89,8 @@ export const Features = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hidden md:block" />
+            <CarouselNext className="hidden md:block" />
           </Carousel>
           {/* <Button className=" text-base">Get Started</Button> */}
 

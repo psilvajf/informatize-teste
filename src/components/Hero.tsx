@@ -55,9 +55,8 @@ export const Hero = () => {
         </main>
 
         <p className="text-base md:text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
-          The all-in-one platform for superheroes like entrepreneurs,
-          professionals and coaches to grow, engage, and build trust with their
-          online communities.
+          The one-stop solution for creators, coaches, teachers, and
+          professionals to build, grow, and manage their digital business.
         </p>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
