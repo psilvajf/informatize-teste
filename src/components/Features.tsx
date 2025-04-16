@@ -19,7 +19,6 @@ import Chat from "../assets/Chat.jpg";
 import heroImage from "../assets/Dashboard.jpg";
 import { motion } from "framer-motion";
 import { LucideIcon, LayoutDashboard, MessageSquareMore } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
 interface FeatureProps {
   icon: LucideIcon;
   title: string;
@@ -55,7 +54,6 @@ const featureList: string[] = [
 ];
 
 export const Features = () => {
-  const isMobile = useIsMobile();
   return (
     <section className="container py-24 sm:py-32 mx-auto px-4">
       <motion.div

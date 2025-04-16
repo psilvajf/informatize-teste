@@ -5,7 +5,6 @@ import {
   Features,
   Services,
   Cta,
-  FAQ,
   Footer,
   ScrollToTop,
   FeaturesVideoCalling,
