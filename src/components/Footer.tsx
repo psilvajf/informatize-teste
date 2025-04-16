@@ -143,7 +143,8 @@ export const Footer = () => {
         </div>
       </section>
 
-      <section className="container pb-14 max-w-6xl">
+      <section className="container pb-8 max-w-6xl space-y-4">
+        <hr className="w-full" />
         <h3>&copy; 2025 CAPES.APP - All rights reserved.</h3>
       </section>
     </footer>

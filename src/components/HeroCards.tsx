@@ -1,41 +1,19 @@
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Badge } from "./ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  CardFooter,
-} from "@/components/ui/card";
-import { Check, Linkedin } from "lucide-react";
-import { LightBulbIcon } from "./Icons";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { Card } from "@/components/ui/card";
+import product from "@/assets/product-hero.png";
+import profile from "@/assets/profile-hero.png";
+import table from "@/assets/table-hero.png";
 
 export const HeroCards = () => {
   return (
     <div className="hidden lg:flex flex-row flex-wrap gap-8 relative w-[650px] h-[500px]">
-      {/* Testimonial */}
-      <Card className="absolute w-[300px] -top-[15px] drop-shadow-xl shadow-black/10 dark:shadow-white/10">
-        <CardHeader className="flex flex-row items-center gap-4 pb-2">
-          <Avatar>
-            <AvatarImage alt="" src="https://github.com/shadcn.png" />
-            <AvatarFallback>SH</AvatarFallback>
-          </Avatar>
-
-          <div className="flex flex-col">
-            <CardTitle className="text-lg">John Doe React</CardTitle>
-            <CardDescription>@john_doe</CardDescription>
-          </div>
-        </CardHeader>
-
-        <CardContent>This landing page is awesome!</CardContent>
+      {/* profile */}
+      <Card className="absolute w-[350px] -top-[-80px] bg-transparent shadow-none border-none">
+        <img src={profile} alt="user avatar" />
       </Card>
 
-      {/* Team */}
-      <Card className="absolute right-[20px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10">
-        <CardHeader className="mt-8 flex justify-center items-center pb-2">
+      {/* table */}
+      <Card className="absolute right-[20px] top-2 w-[400px] bg-transparent shadow-none border-none">
+        {/* <CardHeader className="mt-8 flex justify-center items-center pb-2">
           <img
             src="https://i.pravatar.cc/150?img=58"
             alt="user avatar"
@@ -102,10 +80,11 @@ export const HeroCards = () => {
               <Linkedin size="20" />
             </a>
           </div>
-        </CardFooter>
+        </CardFooter> */}
+        <img src={table} alt="user avatar" />
       </Card>
 
-      {/* Pricing */}
+      {/* Pricing
       <Card className="absolute top-[132px] left-[36px] w-72  drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader>
           <CardTitle className="flex item-center justify-between">
@@ -142,11 +121,11 @@ export const HeroCards = () => {
             )}
           </div>
         </CardFooter>
-      </Card>
+      </Card> */}
 
-      {/* Service */}
-      <Card className="absolute w-[320px] -right-[0px] bottom-[35px]  drop-shadow-xl shadow-black/10 dark:shadow-white/10">
-        <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
+      {/* product */}
+      <Card className="absolute w-[320px] -right-[0px] bottom-[0px]  bg-transparent shadow-none border-none">
+        {/* <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
           <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
             <LightBulbIcon />
           </div>
@@ -157,7 +136,8 @@ export const HeroCards = () => {
               natusm.
             </CardDescription>
           </div>
-        </CardHeader>
+        </CardHeader> */}
+        <img src={product} alt="user avatar" />
       </Card>
     </div>
   );
