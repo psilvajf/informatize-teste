@@ -60,38 +60,38 @@ export const FeaturesVideoCalling = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="flex flex-col items-center justify-center gap-4 pb-20">
-            {/* <p className="text-center text-lg text-gray-600 dark:text-gray-400">
-              Manage and schedule all your video calls, voice calls and group
-              sessions seamlessly with custom payment integrations and
-            </p> */}
-          </div>
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-16 md:grid-cols-2">
-            <img
-              src={featuresImage}
-              alt="Macbook" // @ai_context: Add alt text
-              className="w-full"
-            />
-            <div className="grid grid-row-1 md:grid-row-2 gap-4">
-              <div className="flex flex-col items-start">
-                <span className="mb-4 inline-block rounded-full px-4 py-1.5 text-sm font-semibold border-[1px] border-primary/40  text-primary">
-                  Features
-                </span>
+          <div className="mx-auto max-w-6xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+              {/* Left side component - Image */}
+              <div className="order-2 md:order-1">
+                <img
+                  src={featuresImage}
+                  alt="Features illustration"
+                  className="w-full"
+                />
               </div>
-              <h2 className="text-2xl md:text-4xl font-bold">
-                Video, Voice, Group Sessions all in one platform.
-              </h2>
-              <p className="text-base text-gray-600 dark:text-gray-400">
-                Manage and schedule all your video calls, voice calls and group
-                sessions seamlessly with custom payment integrations.
-              </p>
-              {features &&
-                features.map((feature, index) => (
-                  <FeatureCard key={index + 1} {...feature} />
-                ))}
-              {/* <Button className="w-full md:w-1/3 h-14 text-base font-semibold">
-                Start Your Store
-              </Button> */}
+
+              {/* Right side component - Content */}
+              <div className="order-1 md:order-2 flex flex-col gap-6 items-center md:items-start ">
+                <div>
+                  <span className="mb-4 inline-block rounded-full px-4 py-1.5 text-sm font-semibold border-[1px] border-primary/40 text-primary">
+                    Features
+                  </span>
+                </div>
+                <h2 className="text-2xl md:text-4xl font-bold text-center md:text-left">
+                  Video, Voice, Group Sessions all in one platform.
+                </h2>
+                <p className="text-base text-gray-600 dark:text-gray-400 text-center md:text-left">
+                  Manage and schedule all your video calls, voice calls and
+                  group sessions seamlessly with custom payments.
+                </p>
+                <div className="space-y-4">
+                  {features &&
+                    features.map((feature, index) => (
+                      <FeatureCard key={index} {...feature} />
+                    ))}
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>

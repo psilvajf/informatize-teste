@@ -72,13 +72,13 @@ export const Features = () => {
             </span>
           </h2>
 
-          <Carousel className="mx-auto max-w-5xl flex flex-wrap md:justify-center gap-2">
+          <Carousel className="mx-auto max-w-5xl flex flex-wrap md:justify-center">
             <CarouselContent className="-ml-1">
               {featureList.map((feature: string) => (
-                <CarouselItem key={feature} className="basis-1/8">
+                <CarouselItem key={feature} className="basis-1/10 md:basis-1/8">
                   <Badge
                     variant="secondary"
-                    className="text-sm px-6 py-2 rounded-md"
+                    className="text-xs md:text-sm px-4 md:px-6 py-2 rounded-md"
                   >
                     {feature}
                   </Badge>
@@ -117,7 +117,7 @@ export const Features = () => {
                     alt={title}
                     className="w-full h-full object-cover rounded-lg"
                   />
-                  <CardTitle className="flex items-center gap-3 pt-6">
+                  <CardTitle className="flex items-center gap-3 pt-6 text-xl md:text-2xl">
                     <Icon />
                     {title}
                   </CardTitle>

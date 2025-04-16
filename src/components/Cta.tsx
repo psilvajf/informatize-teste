@@ -17,8 +17,8 @@ export const Cta = () => {
             </span>
           </h2>
           <p className="text-muted-foreground text-base md:text-xl mt-4 mb-8 lg:mb-0 leading-normal">
-            Let's remove all the manuals.
-            <br />
+            {/* Let's remove all the manuals.
+            <br /> */}
             Join <b>CAPES.APP</b> and start offering 1:1 sessions that flows.
           </p>
           <div className="space-y-4 md:space-y-8 lg:col-start-2">

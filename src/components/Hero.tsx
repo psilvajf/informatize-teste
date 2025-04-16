@@ -13,7 +13,7 @@ export const Hero = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="text-center px-14 lg:text-start space-y-6"
+        className=" md:px-14 text-start space-y-6"
       >
         <div className="flex items-center  border-[1px] px-4 border-amber-400 rounded-full w-fit h-fit p-2">
           <span className="relative flex h-2 w-2" data-svelte-h="svelte-n36up">
@@ -23,7 +23,7 @@ export const Hero = () => {
           &nbsp;&nbsp;
           <span
             className={cn(
-              `animate-gradient inline bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
+              `animate-gradient inline bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent text-sm md:text-base`
             )}
           >
             Coming Soon
@@ -31,7 +31,7 @@ export const Hero = () => {
           &nbsp;&nbsp;🚀
           {/* <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" /> */}
         </div>
-        <main className="text-3xl md:text-5xl font-bold">
+        <main className="text-4xl md:text-5xl font-bold">
           {/* <h1 className="inline">
             <span className="inline bg-gradient-to-r from-[#F596D3]  to-[#D247BF] text-transparent bg-clip-text">
               Shadcn
