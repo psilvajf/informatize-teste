@@ -66,7 +66,7 @@ export const Hero = () => {
 
           <a
             rel="noreferrer noopener"
-            href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+            href="https://calendar.app.google/ov6LZxu76YHaBwLm6"
             target="_blank"
             className={`w-full md:w-1/3  md:h-14 text-base font-semibold ${buttonVariants(
               {

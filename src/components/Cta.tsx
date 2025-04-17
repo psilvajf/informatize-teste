@@ -16,17 +16,22 @@ export const Cta = () => {
               let's make it easier.{" "}
             </span>
           </h2>
-          <p className="text-muted-foreground text-base md:text-xl mt-4 mb-8 lg:mb-0 leading-normal">
+          <p className="text-muted-foreground text-base md:text-xl mt-4 mb-8 lg:mb-8 leading-normal">
             {/* Let's remove all the manuals.
             <br /> */}
-            Join <b>CAPES.APP</b> and stop wasting time and effort managing
-            everthing manually — focus on what you love doing most.
+            Stop wasting time and effort managing everthing manually. Join{" "}
+            <b>CAPES.APP</b> and focus on what you love doing most.
           </p>
           <div className="space-y-4 md:space-y-8 lg:col-start-2">
             <Button className="w-full md:mr-4 md:w-auto">Start now</Button>
-            <Button variant="outline" className="w-full md:w-auto">
-              Request a Demo
-            </Button>
+            <a
+              href="https://calendar.app.google/ov6LZxu76YHaBwLm6"
+              target="_blank"
+            >
+              <Button variant="outline" className="w-full md:w-auto">
+                Request a Demo
+              </Button>
+            </a>
           </div>
         </div>
 
