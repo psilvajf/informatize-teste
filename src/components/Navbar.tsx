@@ -22,24 +22,24 @@ interface RouteProps {
 }
 
 const routeList: RouteProps[] = [
-  {
-    href: "#features",
-    label: "Features",
-  },
-  {
-    href: "#services",
-    label: "Offerings",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
+  // {
+  //   href: "#features",
+  //   label: "Features",
+  // },
+  // {
+  //   href: "#services",
+  //   label: "Offerings",
+  // },
+  // {
+  //   href: "#faq",
+  //   label: "FAQ",
+  // },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <header className="sticky border-b-[0.5px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background py-1">
+    <header className="sticky top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background py-1">
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14  px-8 w-screen flex justify-between ">
           <NavigationMenuItem className="font-bold flex">
@@ -109,14 +109,14 @@ export const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex gap-2">
-            <a
+            {/* <a
               rel="noreferrer noopener"
               // href="https://github.com/leoMirandaa/shadcn-landing-page.git"
               target="_blank"
               className={`border ${buttonVariants({ variant: "secondary" })}`}
             >
               Login
-            </a>
+            </a> */}
 
             <ModeToggle />
           </div>

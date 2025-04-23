@@ -84,7 +84,7 @@ export const Footer = () => {
           </div>
         </div> */}
 
-        <div className="flex flex-col gap-2">
+        {/* <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Resources</h3>
           <div>
             <a
@@ -115,7 +115,7 @@ export const Footer = () => {
               How it works
             </a>
           </div>
-        </div>
+        </div> */}
 
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Legal</h3>

@@ -3,8 +3,32 @@ import { buttonVariants } from "./ui/button";
 import { HeroCards } from "./HeroCards";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { CircleCheck, LucideIcon } from "lucide-react";
 // import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
 // import { Star } from "lucide-react";
+interface FeatureProps {
+  icon: LucideIcon;
+  label: string;
+}
+
+const featureList: FeatureProps[] = [
+  {
+    icon: CircleCheck,
+    label: "Personalized page",
+  },
+  {
+    icon: CircleCheck,
+    label: "No payments delays",
+  },
+  {
+    icon: CircleCheck,
+    label: "Get notifications for everything",
+  },
+  {
+    icon: CircleCheck,
+    label: "Dashboard for every niche",
+  },
+];
 
 export const Hero = () => {
   return (
@@ -13,7 +37,7 @@ export const Hero = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className=" md:px-14 text-start space-y-6"
+        className=" md:px-8 text-start space-y-6"
       >
         <div className="flex items-center  border-[1px] px-4 border-amber-400 rounded-full w-fit h-fit p-2">
           <span className="relative flex h-2 w-2" data-svelte-h="svelte-n36up">
@@ -31,7 +55,7 @@ export const Hero = () => {
           &nbsp;&nbsp;🚀
           {/* <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" /> */}
         </div>
-        <main className="text-4xl md:text-5xl font-bold">
+        <main className="text-4xl md:text-5xl font-bold !leading-tight">
           {/* <h1 className="inline">
             <span className="inline bg-gradient-to-r from-[#F596D3]  to-[#D247BF] text-transparent bg-clip-text">
               Shadcn
@@ -46,22 +70,37 @@ export const Hero = () => {
             developers
           </h2> */}
           <h3>
-            Every superhero needs a{" "}
-            <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+            Connect, Manage and
+            <br />
+            Monetize your Audience
+            {/* <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
               cape{" "}
             </span>
-            - Set your business to autopilot.
+            - Set your business to autopilot. */}
           </h3>
         </main>
 
-        <p className="text-base md:text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
+        {/* <p className="text-base md:text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
           The one-stop solution for creators, coaches, teachers, and
           professionals to build, grow, and manage their digital business.
-        </p>
+        </p> */}
+        <div className="flex flex-col gap-4">
+          {featureList.map(({ icon: Icon, label }) => (
+            <div
+              key={label}
+              className="flex items-center gap-3 text-sm md:text-xl"
+            >
+              <Icon size={28} className="text-background fill-[#34C759]" />
+              <span className="text-muted-foreground">{label}</span>
+            </div>
+          ))}
+        </div>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button className="w-full md:w-1/3 md:h-14 text-base font-semibold">
-            Start Your Store
+          <Button className="w-full md:w-1/3 md:h-14 text-base font-semibold custom-gradient-border">
+            <a href="https://app.youform.com/forms/bo1getwx" target="_blank">
+              Join Waitlist
+            </a>
           </Button>
 
           <a
