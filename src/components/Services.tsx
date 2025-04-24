@@ -20,6 +20,7 @@ import {
   Presentation,
   HandCoins,
   Banknote,
+  LinkIcon,
 } from "lucide-react";
 
 interface ServiceProps {
@@ -62,6 +63,14 @@ const features: ServiceProps[] = [
     iconColor: "text-green-500",
     backgroundColor: "bg-green-500/10",
   },
+  {
+    title: "Affiliate Programs",
+    description:
+      "Create and manage affiliate programs for your products and services.",
+    icon: LinkIcon,
+    iconColor: "text-blue-500",
+    backgroundColor: "bg-blue-500/10",
+  },
 ];
 
 const ServiceCard = ({
@@ -84,8 +93,8 @@ const ServiceCard = ({
           <Icon className={`${iconColor} size-6`} />
         </div>
 
-        <CardTitle className="text-xl">{title}</CardTitle>
-        <CardDescription className="text-base">{description}</CardDescription>
+        <CardTitle className="text-lg">{title}</CardTitle>
+        <CardDescription className="text-sm">{description}</CardDescription>
       </CardHeader>
     </Card>
   </motion.div>
@@ -93,7 +102,7 @@ const ServiceCard = ({
 
 export const Services = () => {
   return (
-    <section id="services" className=" my-20">
+    <section id="services" className="py-10 md:py-20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -112,7 +121,7 @@ export const Services = () => {
               minutes
             </p>
           </div>
-          <div className="mx-auto grid max-w-5xl gap-4 md:gap-8 grid-cols-2">
+          <div className="mx-auto grid max-w-5xl gap-2 md:gap-8 grid-cols-2">
             {features.map((feature, index) => (
               <ServiceCard key={index} {...feature} />
             ))}

@@ -7,12 +7,12 @@ export const HeroCards = () => {
   return (
     <div className="hidden lg:flex flex-row flex-wrap gap-8 relative w-[650px] h-[500px]">
       {/* profile */}
-      <Card className="absolute w-[350px] -top-[-80px] bg-transparent shadow-none border-none">
+      <Card className="absolute w-[350px] -top-[0px] bg-transparent shadow-none border-none">
         <img src={profile} alt="user avatar" />
       </Card>
 
       {/* table */}
-      <Card className="absolute right-[20px] top-2 w-[400px] bg-transparent shadow-none border-none">
+      <Card className="absolute right-[20px] top-[-40px] w-[400px] bg-transparent shadow-none border-none">
         {/* <CardHeader className="mt-8 flex justify-center items-center pb-2">
           <img
             src="https://i.pravatar.cc/150?img=58"
@@ -124,7 +124,7 @@ export const HeroCards = () => {
       </Card> */}
 
       {/* product */}
-      <Card className="absolute w-[320px] -right-[0px] bottom-[0px]  bg-transparent shadow-none border-none">
+      <Card className="absolute w-[320px] -right-[0px] bottom-[40px]  bg-transparent shadow-none border-none">
         {/* <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
           <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
             <LightBulbIcon />

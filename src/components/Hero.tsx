@@ -1,4 +1,3 @@
-import { Button } from "./ui/button";
 import { buttonVariants } from "./ui/button";
 import { HeroCards } from "./HeroCards";
 import { cn } from "@/lib/utils";
@@ -32,7 +31,7 @@ const featureList: FeatureProps[] = [
 
 export const Hero = () => {
   return (
-    <section className="container grid lg:grid-cols-2 place-items-center py-14 md:py-16 gap-10">
+    <section className="container h-screen grid lg:grid-cols-2 place-items-center gap-10">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -55,7 +54,7 @@ export const Hero = () => {
           &nbsp;&nbsp;🚀
           {/* <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" /> */}
         </div>
-        <main className="text-4xl md:text-5xl font-bold !leading-tight">
+        <main className="text-3xl md:text-5xl font-bold !leading-tight">
           {/* <h1 className="inline">
             <span className="inline bg-gradient-to-r from-[#F596D3]  to-[#D247BF] text-transparent bg-clip-text">
               Shadcn
@@ -97,15 +96,20 @@ export const Hero = () => {
         </div>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button className="w-full md:w-1/3 md:h-14 text-base font-semibold custom-gradient-border">
-            <a href="https://app.youform.com/forms/bo1getwx" target="_blank">
-              Join Waitlist
-            </a>
-          </Button>
-
+          <a
+            href="https://app.youform.com/forms/bo1getwx"
+            target="_blank"
+            className={`w-full md:w-1/3 md:h-14 text-base font-semibold custom-gradient-border ${buttonVariants(
+              {
+                variant: "default",
+              }
+            )}`}
+          >
+            Join Waitlist
+          </a>
           <a
             rel="noreferrer noopener"
-            href="https://calendar.app.google/ov6LZxu76YHaBwLm6"
+            href="https://calendar.app.google/sVcQwekYrRbL9mbQ6"
             target="_blank"
             className={`w-full md:w-1/3  md:h-14 text-base font-semibold ${buttonVariants(
               {

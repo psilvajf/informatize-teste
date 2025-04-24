@@ -1,12 +1,5 @@
 import { Badge } from "./ui/badge";
 import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -14,48 +7,45 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 // import image from "../assets/growth.png";
-import CRM from "../assets/CRM.jpg";
-import Chat from "../assets/Chat.jpg";
 import heroImage from "../assets/Dashboard.jpg";
 import { motion } from "framer-motion";
-import { LucideIcon, LayoutDashboard, MessageSquareMore } from "lucide-react";
-interface FeatureProps {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  image: string;
-}
+// interface FeatureProps {
+//   icon: LucideIcon;
+//   title: string;
+//   description: string;
+//   // image: string;
+// }
 
-const features: FeatureProps[] = [
-  {
-    icon: LayoutDashboard,
-    title: "Client Management Dashboard",
-    description:
-      "Manage your clients, leads, and projects all in one place. Replace your spreadsheets and scattered notes.",
-    image: CRM,
-  },
-  {
-    icon: MessageSquareMore,
-    title: "Community and Chat Support",
-    description:
-      "Create a community for your clients and provide them with chat support. Build a community around your offerings.",
-    image: Chat,
-  },
-];
+// const features: FeatureProps[] = [
+//   {
+//     icon: LayoutDashboard,
+//     title: "Client Management Dashboard",
+//     description:
+//       "Manage your clients, leads, and projects all in one place. Replace your spreadsheets and scattered notes.",
+//     // image: CRM,
+//   },
+//   {
+//     icon: MessageSquareMore,
+//     title: "Community and Chat Support",
+//     description:
+//       "Create a community for your clients and provide them with chat support. Build a community around your offerings.",
+//     // image: Chat,
+//   },
+// ];
 
 const featureList: string[] = [
   "Client Dashboard",
   "Offerings Management",
-  "Page Builder",
-  "Community and Chat",
   "Payment Integration",
   "Calendar and Scheduling",
   "Stats and Analytics",
+  "Community and Chat",
+  "Page Builder",
 ];
 
 export const Features = () => {
   return (
-    <section className="container py-24 sm:py-32 mx-auto px-4">
+    <section className="container py-12 sm:py-32 mx-auto px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -106,7 +96,7 @@ export const Features = () => {
             />
           </motion.div>
         </div>
-        <div className="mx-auto max-w-6xl grid md:grid-cols-2 pt-10">
+        {/* <div className="mx-auto max-w-6xl grid md:grid-cols-2 pt-10">
           {features.map(
             ({ title, description, image, icon: Icon }: FeatureProps) => (
               <Card
@@ -132,7 +122,7 @@ export const Features = () => {
               </Card>
             )
           )}
-        </div>
+        </div> */}
       </motion.div>
     </section>
   );

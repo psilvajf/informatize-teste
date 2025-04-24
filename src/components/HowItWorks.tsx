@@ -80,7 +80,7 @@ export const HowItWorks = () => {
                       {title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="text-muted-foreground">
+                  <CardContent className="text-muted-foreground text-sm">
                     {description}
                   </CardContent>
                 </Card>

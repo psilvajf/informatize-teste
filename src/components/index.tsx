@@ -3,7 +3,7 @@ import { Navbar } from "./Navbar";
 import { About } from "./About";
 import { Cta } from "./Cta";
 import { FAQ } from "./FAQ";
-import { FeaturesVideoCalling } from "./FeaturesVideoCalling";
+import { FeaturesVideoCalling } from "./Features/FeaturesVideoCalling";
 import { Features } from "./Features";
 import { Footer } from "./Footer";
 import { HowItWorks } from "./HowItWorks";
@@ -14,6 +14,11 @@ import { Services } from "./Services";
 import { Sponsors } from "./Sponsors";
 import { Team } from "./Team";
 import { Testimonials } from "./Testimonials";
+import { FeaturePage } from "./Features/FeaturePage";
+import { FeatureOfferings } from "./Features/FeatureOfferings";
+import { FeaturePayments } from "./Features/FeaturePayments";
+import { FeatureTestimonials } from "./Features/FeatureTestimonials";
+import { WhyCapes } from "./WhyCapes";
 export {
   Hero,
   Navbar,
@@ -31,4 +36,9 @@ export {
   Sponsors,
   Team,
   Testimonials,
+  FeaturePage,
+  FeatureOfferings,
+  FeaturePayments,
+  FeatureTestimonials,
+  WhyCapes,
 };

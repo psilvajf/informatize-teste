@@ -7,7 +7,11 @@ import {
   Cta,
   Footer,
   ScrollToTop,
-  FeaturesVideoCalling,
+  FeaturePage,
+  FeatureOfferings,
+  FeaturePayments,
+  FeatureTestimonials,
+  WhyCapes,
 } from "./components";
 import "./App.css";
 
@@ -17,11 +21,16 @@ function App() {
       <Navbar />
       <Hero />
       {/* <Sponsors /> */}
+      <FeaturePage />
+      <FeatureOfferings />
+      <FeaturePayments />
+      <FeatureTestimonials />
       <Features />
-      <FeaturesVideoCalling />
+      {/* <FeaturesVideoCalling /> */}
       {/* <About /> */}
       <Services />
       <HowItWorks />
+      <WhyCapes />
       <Cta />
       {/* <Testimonials /> */}
       {/* <Team /> */}
