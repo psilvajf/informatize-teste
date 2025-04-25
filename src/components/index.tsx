@@ -19,6 +19,7 @@ import { FeatureOfferings } from "./Features/FeatureOfferings";
 import { FeaturePayments } from "./Features/FeaturePayments";
 import { FeatureTestimonials } from "./Features/FeatureTestimonials";
 import { WhyCapes } from "./WhyCapes";
+import { Loader } from "./Loader";
 export {
   Hero,
   Navbar,
@@ -41,4 +42,5 @@ export {
   FeaturePayments,
   FeatureTestimonials,
   WhyCapes,
+  Loader,
 };

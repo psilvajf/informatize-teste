@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Navbar,
   Hero,
@@ -12,10 +13,26 @@ import {
   FeaturePayments,
   FeatureTestimonials,
   WhyCapes,
+  Loader,
 } from "./components";
 import "./App.css";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time or wait for actual resources
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds loading time
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <>
       <Navbar />
