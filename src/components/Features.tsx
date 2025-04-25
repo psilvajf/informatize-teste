@@ -82,8 +82,10 @@ export const Features = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:block" />
-            <CarouselNext className="hidden md:block" />
+            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none">
+              <CarouselPrevious className="hidden md:flex pointer-events-auto" />
+              <CarouselNext className="hidden md:flex pointer-events-auto" />
+            </div>
           </Carousel>
           {/* <Button className=" text-base">Get Started</Button> */}
 
