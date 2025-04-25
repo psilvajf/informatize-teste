@@ -52,15 +52,20 @@ export const Features = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="flex flex-col items-center gap-10">
-          <span className=" inline-block rounded-full px-4 py-1.5 text-sm font-semibold border-[1px] border-primary/40  text-primary">
-            Your own dashboard
-          </span>
-          <h2 className="text-2xl md:text-5xl font-bold text-center">
-            Your Whole Business in <br />
-            <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text leading-relaxed">
-              One Dashboard
+          <div className="flex flex-col items-center justify-center gap-4">
+            <span className=" inline-block rounded-full px-4 py-1.5 text-sm font-semibold border-[1px] border-primary/40  text-primary">
+              Your own dashboard
             </span>
-          </h2>
+            <h2 className="text-2xl md:text-5xl font-bold text-center">
+              Your Whole Business in <br />
+              <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text leading-normal">
+                One Dashboard
+              </span>
+            </h2>
+            <p className="text-center text-base md:text-lg text-gray-600 dark:text-gray-400">
+              Replace multiple tools with one powerful platform
+            </p>
+          </div>
           <Carousel className="mx-auto w-full md:max-w-5xl flex flex-wrap md:justify-center">
             <CarouselContent className="-ml-1">
               {featureList.map((feature: string) => (

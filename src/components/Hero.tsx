@@ -1,8 +1,9 @@
 import { buttonVariants } from "./ui/button";
-import { HeroCards } from "./HeroCards";
+// import { HeroCards } from "./HeroCards";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { CircleCheck, LucideIcon } from "lucide-react";
+import hero from "@/assets/hero.png";
 // import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
 // import { Star } from "lucide-react";
 interface FeatureProps {
@@ -31,14 +32,14 @@ const featureList: FeatureProps[] = [
 
 export const Hero = () => {
   return (
-    <section className="container h-screen grid lg:grid-cols-2 place-items-center gap-10">
+    <section className="flex flex-col md:flex-row w-max-6xl md:h-screen place-items-center gap-10 py-14">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className=" md:px-8 text-start space-y-6"
+        className="w-full px-8 md:px-14 text-start space-y-6"
       >
-        <div className="flex items-center  border-[1px] px-4 border-amber-400 rounded-full w-fit h-fit p-2">
+        <div className="flex items-center  border-[1px] border-amber-400 rounded-full w-fit h-fit p-2">
           <span className="relative flex h-2 w-2" data-svelte-h="svelte-n36up">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>{" "}
             <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-500"></span>
@@ -148,12 +149,13 @@ export const Hero = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="text-center px-14 lg:text-start space-y-6"
+        className="text-center px-8 md:px-14 lg:text-start space-y-6"
       >
         {/* Hero cards sections */}
-        <div className="z-10 px-10 lg:px-0">
+        {/* <div className="z-10 px-10 lg:px-0">
           <HeroCards />
-        </div>
+        </div> */}
+        <img src={hero} alt="hero" />
 
         {/* Shadow effect */}
         <div className="shadow"></div>

@@ -22,11 +22,11 @@ export const Cta = () => {
             Stop wasting time and effort managing everthing manually.
             {/* Join{" "}<b>CAPES.APP</b> and focus on what you love doing most. */}
           </p>
-          <div className="flex flex-col gap-2 md:flex-row items-center justify-center">
+          <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-center">
             <a
               href="https://app.youform.com/forms/bo1getwx"
               target="_blank"
-              className={`w-full md:w-1/3 md:h-14 text-base font-semibold custom-gradient-border ${buttonVariants(
+              className={`w-full md:w-1/5 md:h-14 text-base font-semibold custom-gradient-border ${buttonVariants(
                 {
                   variant: "default",
                 }
@@ -38,7 +38,7 @@ export const Cta = () => {
               rel="noreferrer noopener"
               href="https://calendar.app.google/sVcQwekYrRbL9mbQ6"
               target="_blank"
-              className={`w-full md:w-1/3  md:h-14 text-base font-semibold ${buttonVariants(
+              className={`w-full md:w-1/5  md:h-14 text-base font-semibold ${buttonVariants(
                 {
                   variant: "outline",
                 }

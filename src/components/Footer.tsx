@@ -23,7 +23,7 @@ export const Footer = () => {
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="https://www.instagram.com/capes.app/"
               className="opacity-60 hover:opacity-100"
             >
               <InstagramLogoIcon className="w-6 h-6" />
@@ -33,7 +33,7 @@ export const Footer = () => {
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="https://x.com/capes_app/"
               className="opacity-60 hover:opacity-100"
             >
               <TwitterLogoIcon className="w-6 h-6" />

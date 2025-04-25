@@ -3,8 +3,6 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { BellRing, CreditCard, History, LucideIcon } from "lucide-react";
 import featuresImage from "@/assets/CRM.png";
-import { Button } from "@/components/ui/button";
-
 interface FeatureProps {
   title: string;
   icon: LucideIcon;
@@ -91,14 +89,14 @@ export const FeaturePayments = () => {
                       <FeatureCard key={index} {...feature} />
                     ))}
                 </div>
-                <Button className="w-full md:w-1/3 md:h-12 text-base font-semibold custom-gradient-border">
+                {/* <Button className="w-full md:w-1/3 md:h-12 text-base font-semibold custom-gradient-border">
                   <a
                     href="https://app.youform.com/forms/bo1getwx"
                     target="_blank"
                   >
                     Join Waitlist
                   </a>
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
