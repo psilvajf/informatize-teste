@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { CircleCheck, LucideIcon } from "lucide-react";
 import hero from "@/assets/hero.png";
-import { lazy, Suspense } from "react";
 // import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
 // import { Star } from "lucide-react";
 interface FeatureProps {
