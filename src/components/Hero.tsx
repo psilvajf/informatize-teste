@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { CircleCheck, LucideIcon } from "lucide-react";
 import hero from "@/assets/hero.png";
+import { lazy, Suspense } from "react";
 // import AnimatedGradientText from "@/components/magicui/animated-gradient-text";
 // import { Star } from "lucide-react";
 interface FeatureProps {
@@ -155,7 +156,7 @@ export const Hero = () => {
         {/* <div className="z-10 px-10 lg:px-0">
           <HeroCards />
         </div> */}
-        <img src={hero} alt="hero" />
+        <img src={hero} alt="hero" loading="lazy" className="relative z-10" />
 
         {/* Shadow effect */}
         <div className="shadow"></div>
