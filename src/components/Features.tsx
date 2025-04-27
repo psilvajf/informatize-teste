@@ -85,17 +85,22 @@ export const Features = () => {
               isCarouselInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
             }
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            className="w-full overflow-hidden" // Add this to contain overflow
           >
-            <Carousel className="mx-auto w-full md:max-w-5xl flex flex-wrap md:justify-center">
-              <CarouselContent className="-ml-1">
+            <Carousel className="w-full max-w-full md:max-w-5xl mx-auto">
+              {" "}
+              {/* Fix width issues */}
+              <CarouselContent className="-ml-1 md:-ml-4">
+                {" "}
+                {/* Adjust margin */}
                 {featureList.map((feature: string) => (
                   <CarouselItem
                     key={feature}
-                    className="basis-1/10 md:basis-1/8 pl-2 md:pl-4"
+                    className="pl-1 md:pl-4 basis-1/10 md:basis-1/8" // More responsive basis
                   >
                     <Badge
                       variant="secondary"
-                      className="text-xs md:text-sm px-4 md:px-6 py-2 rounded-md"
+                      className="text-xs md:text-sm px-3 md:px-6 py-2 rounded-md whitespace-nowrap" // Control text wrapping
                     >
                       {feature}
                     </Badge>
