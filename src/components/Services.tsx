@@ -6,13 +6,14 @@ This client component provides the features section for the landing page.
 
 "use client";
 
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { motion } from "framer-motion";
 
 import {
   LucideIcon,
@@ -79,41 +80,62 @@ const ServiceCard = ({
   icon: Icon,
   iconColor,
   backgroundColor,
-}: ServiceProps) => (
-  <motion.div
-    // whileHover={{ scale: 1.05 }}
-    transition={{ type: "spring", stiffness: 300 }}
-    className="transform-gpu"
-  >
-    <Card className="group transition-shadow duration-200 w-full h-full border-none rounded-3xl">
-      <CardHeader className="flex gap-3">
-        <div
-          className={`${backgroundColor} rounded-xl p-2 flex items-center justify-center w-10 h-10`}
-        >
-          <Icon className={`${iconColor} size-6`} />
-        </div>
+}: ServiceProps) => {
+  const cardRef = useRef(null);
+  const isCardInView = useInView(cardRef, { once: true, amount: 0.3 });
 
-        <CardTitle className="text-lg">{title}</CardTitle>
-        <CardDescription className="text-sm">{description}</CardDescription>
-      </CardHeader>
-    </Card>
-  </motion.div>
-);
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isCardInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="transform-gpu"
+    >
+      <Card className="group transition-shadow duration-200 w-full h-full border-none rounded-3xl">
+        <CardHeader className="flex gap-3">
+          <div
+            className={`${backgroundColor} rounded-xl p-2 flex items-center justify-center w-10 h-10`}
+          >
+            <Icon className={`${iconColor} size-6`} />
+          </div>
+
+          <CardTitle className="text-lg">{title}</CardTitle>
+          <CardDescription className="text-sm">{description}</CardDescription>
+        </CardHeader>
+      </Card>
+    </motion.div>
+  );
+};
 
 export const Services = () => {
+  const sectionRef = useRef(null);
+  const isSectionInView = useInView(sectionRef, { once: true, amount: 0.2 });
+
+  const headingRef = useRef(null);
+  const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 });
+
   return (
     <section id="services" className="py-10 md:py-20">
       <div className="container mx-auto px-4">
         <motion.div
+          ref={sectionRef}
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={
+            isSectionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+          }
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="flex flex-col items-center justify-center pb-20 gap-4">
             <span className="mb-4 inline-block rounded-full px-4 py-1.5 text-sm font-semibold border-[1px] border-primary/40  text-primary">
               Offerings
             </span>
-            <h2 className="text-2xl md:text-5xl font-bold md:text-center">
+            <h2
+              ref={headingRef}
+              className={`text-2xl md:text-5xl font-bold md:text-center ${
+                isHeadingInView ? "opacity-100" : "opacity-0"
+              }`}
+            >
               Offerings for every need.
             </h2>
             <p className="text-center text-base md:text-lg text-gray-600 dark:text-gray-400">

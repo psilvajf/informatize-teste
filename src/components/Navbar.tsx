@@ -9,11 +9,10 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from "@/components/ui/sheet";
 
 import { buttonVariants } from "./ui/button";
-import { Menu } from "lucide-react";
+// import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 
 interface RouteProps {
@@ -57,14 +56,14 @@ export const Navbar = () => {
             <ModeToggle />
 
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger className="px-2">
+              {/* <SheetTrigger className="px-2">
                 <Menu
                   className="flex md:hidden h-5 w-5"
                   onClick={() => setIsOpen(true)}
                 >
                   <span className="sr-only">Menu Icon</span>
                 </Menu>
-              </SheetTrigger>
+              </SheetTrigger> */}
 
               <SheetContent side="left" className="w-[250px] max-w-[80vw]">
                 <SheetHeader>

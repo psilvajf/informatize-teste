@@ -43,7 +43,7 @@ export const Footer = () => {
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="https://www.linkedin.com/company/capes-app/"
               className="opacity-60 hover:opacity-100"
             >
               <LinkedInLogoIcon className="w-6 h-6" />

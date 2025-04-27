@@ -8,7 +8,8 @@ import {
 } from "@/components/ui/carousel";
 // import image from "../assets/growth.png";
 import heroImage from "../assets/Dashboard.jpg";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 // interface FeatureProps {
 //   icon: LucideIcon;
 //   title: string;
@@ -44,11 +45,21 @@ const featureList: string[] = [
 ];
 
 export const Features = () => {
+  const sectionRef = useRef(null);
+  const isSectionInView = useInView(sectionRef, { once: true, amount: 0.2 });
+
+  const carouselRef = useRef(null);
+  const isCarouselInView = useInView(carouselRef, { once: true, amount: 0.3 });
+
+  const imageRef = useRef(null);
+  const isImageInView = useInView(imageRef, { once: true, amount: 0.3 });
+
   return (
     <section className="container py-12 sm:py-32 mx-auto px-4">
       <motion.div
+        ref={sectionRef}
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={isSectionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="flex flex-col items-center gap-10">
@@ -66,33 +77,45 @@ export const Features = () => {
               Replace multiple tools with one powerful platform
             </p>
           </div>
-          <Carousel className="mx-auto w-full md:max-w-5xl flex flex-wrap md:justify-center">
-            <CarouselContent className="-ml-1">
-              {featureList.map((feature: string) => (
-                <CarouselItem
-                  key={feature}
-                  className="basis-1/10 md:basis-1/8 pl-2 md:pl-4"
-                >
-                  <Badge
-                    variant="secondary"
-                    className="text-xs md:text-sm px-4 md:px-6 py-2 rounded-md"
-                  >
-                    {feature}
-                  </Badge>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none">
-              <CarouselPrevious className="hidden md:flex pointer-events-auto" />
-              <CarouselNext className="hidden md:flex pointer-events-auto" />
-            </div>
-          </Carousel>
-          {/* <Button className=" text-base">Get Started</Button> */}
 
           <motion.div
+            ref={carouselRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={
+              isCarouselInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            }
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          >
+            <Carousel className="mx-auto w-full md:max-w-5xl flex flex-wrap md:justify-center">
+              <CarouselContent className="-ml-1">
+                {featureList.map((feature: string) => (
+                  <CarouselItem
+                    key={feature}
+                    className="basis-1/10 md:basis-1/8 pl-2 md:pl-4"
+                  >
+                    <Badge
+                      variant="secondary"
+                      className="text-xs md:text-sm px-4 md:px-6 py-2 rounded-md"
+                    >
+                      {feature}
+                    </Badge>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none">
+                <CarouselPrevious className="hidden md:flex pointer-events-auto" />
+                <CarouselNext className="hidden md:flex pointer-events-auto" />
+              </div>
+            </Carousel>
+          </motion.div>
+
+          <motion.div
+            ref={imageRef}
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1, ease: "easeOut" }}
+            animate={
+              isImageInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+            }
+            transition={{ duration: 1, ease: "easeOut" }}
             className="mx-auto my-4 flex items-center justify-center"
           >
             <img
@@ -103,33 +126,6 @@ export const Features = () => {
             />
           </motion.div>
         </div>
-        {/* <div className="mx-auto max-w-6xl grid md:grid-cols-2 pt-10">
-          {features.map(
-            ({ title, description, image, icon: Icon }: FeatureProps) => (
-              <Card
-                key={title}
-                className="bg-transparent border-none shadow-none"
-              >
-                <CardHeader>
-                  <img
-                    src={image}
-                    alt={title}
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                  <CardTitle className="flex items-center gap-3 pt-6 text-xl md:text-2xl">
-                    <Icon />
-                    {title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-muted-foreground">
-                  {description}
-                </CardContent>
-
-                <CardFooter></CardFooter>
-              </Card>
-            )
-          )}
-        </div> */}
       </motion.div>
     </section>
   );
