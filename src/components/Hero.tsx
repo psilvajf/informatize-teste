@@ -32,7 +32,7 @@ const featureList: FeatureProps[] = [
 
 export const Hero = () => {
   return (
-    <section className="flex flex-col md:flex-row w-max-6xl md:h-screen place-items-center gap-10 py-14">
+    <section className="flex flex-col md:flex-row w-max-full md:w-max-6xl md:h-screen place-items-center gap-10 py-14">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -67,7 +67,10 @@ export const FeatureTestimonials = () => {
   const isImageInView = useInView(imageRef, { once: true, amount: 0.3 });
 
   return (
-    <section className="py-10 md:py-20 bg-card rounded-t-[40px]" id="features">
+    <section
+      className="py-10 md:py-20 bg-card rounded-t-[40px] overflow-hidden"
+      id="features"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           ref={sectionRef}

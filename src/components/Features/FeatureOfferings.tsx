@@ -74,7 +74,10 @@ export const FeatureOfferings = () => {
   const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 });
 
   return (
-    <section className="py-10 md:py-20 bg-card rounded-t-[40px]" id="features">
+    <section
+      className="py-10 md:py-20 bg-card rounded-t-[40px] overflow-hidden"
+      id="features"
+    >
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">

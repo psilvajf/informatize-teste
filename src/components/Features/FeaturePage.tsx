@@ -68,7 +68,10 @@ export const FeaturePage = () => {
   const isImageInView = useInView(imageRef, { once: true, amount: 0.2 });
 
   return (
-    <section className="py-10 md:py-20 bg-card rounded-t-[40px]" id="features">
+    <section
+      className="py-10 md:py-20 bg-card rounded-t-[40px] overflow-hidden"
+      id="features"
+    >
       <div className="container mx-auto px-4">
         <div className="flex flex-col gap-10 md:gap-24">
           <motion.h2
@@ -85,7 +88,7 @@ export const FeaturePage = () => {
             your business
             <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text leading-relaxed"></span>
           </motion.h2>
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-6xl overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
               {/* Left side component - Image */}
               <motion.div
