@@ -53,7 +53,7 @@ function App() {
       console.log("Starting final loading timer");
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 2000);
+      });
 
       return () => clearTimeout(timer);
     }
