@@ -65,7 +65,7 @@ const features: ServiceProps[] = [
     backgroundColor: "bg-green-500/10",
   },
   {
-    title: "Affiliate Programs",
+    title: "Affiliate Links",
     description:
       "Create and manage affiliate programs for your products and services.",
     icon: LinkIcon,
