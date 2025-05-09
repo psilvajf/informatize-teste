@@ -22,22 +22,28 @@ export default function HeroHome() {
             </div>
           </div>
 
-          <div className="relative mt-5 flex w-full flex-col">
+          <div className="flex flex-col mt-5 relative w-full">
             <div className="relative">
-              <video
-                autoPlay
-                muted
-                controls={false}
-                playsInline
-                loop
-                className="h-full w-full rounded-sm object-cover object-center"
-              >
-                <source
-                  type="video/mp4"
-                  src="https://cdn.builder.io/o/assets%2F421683bafcd74f55a212ef1092732a22%2F8037a55a54e74c47b6246d75d2a6645d%2Fcompressed?apiKey=421683bafcd74f55a212ef1092732a22&token=8037a55a54e74c47b6246d75d2a6645d&alt=media&optimized=true"
-                />
-              </video>
-              <div className="w-full pt-[77.53%] text-[0] pointer-events-none"></div>
+              <div className="w-full paddingTop-78% pointer-events-none">
+                <div className="flex flex-col relative mt-5 min-h-5 min-w-5 w-full">
+                  <div className="relative">
+                    <video
+                      autoPlay
+                      muted
+                      controls={false}
+                      playsInline
+                      loop
+                      className="w-full h-full object-cover object-center rounded-sm flex flex-col relative mt-5 min-h-5 min-w-5"
+                    >
+                      <source
+                        type="video/mp4"
+                        src="https://cdn.builder.io/o/assets%2F421683bafcd74f55a212ef1092732a22%2Fad5be2fd3d884618ab04814aeacfe3c3%2Fcompressed?apiKey=421683bafcd74f55a212ef1092732a22&token=ad5be2fd3d884618ab04814aeacfe3c3&alt=media&optimized=true"
+                      />
+                    </video>
+                    <div className="w-full pt-[70.04048582995948%] pointer-events-none text-0"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
