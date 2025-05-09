@@ -1,70 +1,63 @@
 import Image from "next/image";
-import BlurredShapeGray from "@/public/images/blurred-shape-gray.svg";
-import BlurredShape from "@/public/images/blurred-shape.svg";
 import FeaturesImage from "@/public/images/features.png";
 
 export default function Features() {
   return (
     <section className="relative">
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 -z-10 -mt-20 -translate-x-1/2"
-        aria-hidden="true"
-      >
+      {/* Blurred shape */}
+      <div className="pointer-events-none absolute left-1/2 -mt-20 -translate-x-1/2 -z-10">
         <Image
-          className="max-w-none"
-          src={BlurredShapeGray}
+          src={"/images/blurred-shape-gray.svg"}
           width={760}
           height={668}
           alt="Blurred shape"
+          className="max-w-none"
         />
       </div>
-      <div
-        className="pointer-events-none absolute bottom-0 left-1/2 -z-10 -mb-80 -translate-x-[120%] opacity-50"
-        aria-hidden="true"
-      >
+      <div className="pointer-events-none absolute bottom-0 left-1/2 -mb-80 -translate-x-[120%] opacity-50 -z-10">
         <Image
-          className="max-w-none"
-          src={BlurredShape}
+          src={"/images/blurred-shape.svg"}
           width={760}
           height={668}
           alt="Blurred shape"
+          className="max-w-none"
         />
       </div>
+
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="border-t py-12 [border-image:linear-gradient(to_right,transparent,--theme(--color-slate-400/.25),transparent)1] md:py-20">
+        <div className="border-t border-transparent border-image-[linear-gradient(to_right,transparent,theme(colors.slate.700/25%),transparent)_1] py-20">
           {/* Section header */}
-          <div className="mx-auto max-w-3xl pb-4 text-center md:pb-12">
-            <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-indigo-200/50">
-              <span className="inline-flex bg-linear-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
-                Advanced Controls
-              </span>
-            </div>
-            <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-indigo-200),var(--color-gray-50),var(--color-indigo-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text pb-4 font-nacelle text-3xl font-semibold text-transparent md:text-4xl">
-              Built for modern product teams
-            </h2>
+          <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
             <p className="text-lg text-indigo-200/65">
-              Open AI reads and understands your files, and with nothing more
-              than a single line of feedback, so you can go further than the
-              speed of thought.
+              Simplificamos a tecnologia para que você possa focar no que
+              realmente importa
             </p>
           </div>
-          <div className="flex justify-center pb-4 md:pb-12" data-aos="fade-up">
+
+          {/* Highlighted image */}
+          <div
+            className="flex justify-center pb-12 md:pb-20"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             <Image
-              className="max-w-none"
               src={FeaturesImage}
               width={1104}
               height={384}
               alt="Features"
+              className="max-w-full md:max-w-none"
             />
           </div>
-          {/* Items */}
-          <div className="mx-auto grid max-w-sm gap-12 sm:max-w-none sm:grid-cols-2 md:gap-x-14 md:gap-y-16 lg:grid-cols-3">
-            <article>
+
+          {/* Features list */}
+          <div className="mx-auto grid max-w-sm gap-y-16 gap-x-8 sm:max-w-none sm:grid-cols-3 md:gap-x-14">
+            {/* 1st Feature */}
+            <div>
               <svg
                 className="mb-3 fill-indigo-500"
+                width="24"
+                height="24"
                 xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
               >
                 <path d="M0 0h14v17H0V0Zm2 2v13h10V2H2Z" />
                 <path
@@ -72,38 +65,44 @@ export default function Features() {
                   d="m16.295 5.393 7.528 2.034-4.436 16.412L5.87 20.185l.522-1.93 11.585 3.132 3.392-12.55-5.597-1.514.522-1.93Z"
                 />
               </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Project Milestones
+              <h3 className="mb-1 font-nacelle text-base font-semibold text-white">
+                Transparência e Clareza
               </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
+              <p className="text-gray-400">
+                Mantenha-se informado sobre cada etapa do processo. Encontre a
+                comunicação ideal para suas necessidades, garantindo
+                visibilidade e confiança.
               </p>
-            </article>
-            <article>
+            </div>
+
+            {/* 2nd Feature */}
+            <div>
               <svg
                 className="mb-3 fill-indigo-500"
+                width="24"
+                height="24"
                 xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
               >
                 <path fillOpacity=".48" d="M7 8V0H5v8h2Zm12 16v-4h-2v4h2Z" />
                 <path d="M19 6H0v2h17v8H7v-6H5v8h19v-2h-5V6Z" />
               </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Team Views
+              <h3 className="mb-1 font-nacelle text-base font-semibold text-white">
+                <strong>Exibições de equipe:</strong>
               </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
+              <p className="text-gray-400">
+                Trabalhe em conjunto de forma organizada e produtiva. Encontre
+                as ferramentas certas para uma comunicação fluida, respeito e
+                segurança nas interações.
               </p>
-            </article>
-            <article>
+            </div>
+
+            {/* 3rd Feature */}
+            <div>
               <svg
                 className="mb-3 fill-indigo-500"
+                width="24"
+                height="24"
                 xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
               >
                 <path d="M23.414 6 18 .586 16.586 2l3 3H7a6 6 0 0 0-6 6h2a4 4 0 0 1 4-4h12.586l-3 3L18 11.414 23.414 6Z" />
                 <path
@@ -111,20 +110,23 @@ export default function Features() {
                   d="M13.01 12.508a2.5 2.5 0 0 0-3.502.482L1.797 23.16.203 21.952l7.71-10.17a4.5 4.5 0 1 1 7.172 5.437l-4.84 6.386-1.594-1.209 4.841-6.385a2.5 2.5 0 0 0-.482-3.503Z"
                 />
               </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Advanced Search
+              <h3 className="mb-1 font-nacelle text-base font-semibold text-white">
+                Soluções Personalizadas
               </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
+              <p className="text-gray-400">
+                Obtenha soluções que atendem às suas necessidades específicas.
+                Encontre as abordagens ideais para seus desafios, com foco em
+                relevância e proteção dos seus dados.
               </p>
-            </article>
-            <article>
+            </div>
+
+            {/* 4th Feature */}
+            <div>
               <svg
                 className="mb-3 fill-indigo-500"
+                width="24"
+                height="24"
                 xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
               >
                 <path
                   fillOpacity=".48"
@@ -137,20 +139,23 @@ export default function Features() {
                 />
                 <path d="m16.321 2-.5-.866 1.733-1 .5.866A22 22 0 0 1 21 12c0 3.852-1.017 7.636-2.948 10.97l-.502.865-1.73-1.003.501-.865A19.878 19.878 0 0 0 19 12a20 20 0 0 0-2.679-10Z" />
               </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Strategic Initiatives
+              <h3 className="mb-1 font-nacelle text-base font-semibold text-white">
+                Foco no Resultado
               </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
+              <p className="text-gray-400">
+                Alcance seus objetivos com um planejamento cuidadoso e
+                estratégico. Encontre o caminho certo para o sucesso, com
+                responsabilidade e segurança em cada ação.
               </p>
-            </article>
-            <article>
+            </div>
+
+            {/* 5th Feature */}
+            <div>
               <svg
                 className="mb-3 fill-indigo-500"
+                width="24"
+                height="24"
                 xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
               >
                 <path
                   fillOpacity=".48"
@@ -158,20 +163,23 @@ export default function Features() {
                 />
                 <path d="m7.454 2.891.891-.454L7.437.655l-.891.454a12 12 0 0 0 0 21.382l.89.454.91-1.781-.892-.455a10 10 0 0 1 0-17.818ZM17.456 1.11l-.891-.454-.909 1.782.891.454a10 10 0 0 1 0 17.819l-.89.454.908 1.781.89-.454a12 12 0 0 0 0-21.382Z" />
               </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Flexible Workflows
+              <h3 className="mb-1 font-nacelle text-base font-semibold text-white">
+                Adaptação às suas Necessidades
               </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
+              <p className="text-gray-400">
+                Desfrute de processos que se ajustam ao seu ritmo e
+                preferências. Encontre a flexibilidade ideal para sua
+                organização, com praticidade e confidencialidade.
               </p>
-            </article>
-            <article>
+            </div>
+
+            {/* 6th Feature */}
+            <div>
               <svg
                 className="mb-3 fill-indigo-500"
+                width="24"
+                height="24"
                 xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
               >
                 <path
                   fillOpacity=".48"
@@ -179,14 +187,14 @@ export default function Features() {
                 />
                 <path d="M19.406 3.844 6.083 20.497.586 15 2 13.586l3.917 3.917L17.844 2.595l1.562 1.25Z" />
               </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Unified Timeline
+              <h3 className="mb-1 font-nacelle text-base font-semibold text-white">
+                Inovação e Soluções Inteligentes
               </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
+              <p className="text-gray-400">
+                Acesse soluções criativas e atualizadas para seus desafios.
+                Encontre novas abordagens com foco em eficiência e segurança.
               </p>
-            </article>
+            </div>
           </div>
         </div>
       </div>

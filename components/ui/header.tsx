@@ -14,7 +14,7 @@ export default function Header() {
           </div>
 
           {/* Desktop sign in links */}
-          <ul className="flex flex-1 items-center justify-end gap-3">
+          <ul className="flex flex-1 items-center justify-end">
             <li></li>
             <li>
               <Link
@@ -25,6 +25,12 @@ export default function Header() {
               </Link>
             </li>
           </ul>
+          <img
+            loading="lazy"
+            srcSet="https://cdn.builder.io/api/v1/image/assets%2F421683bafcd74f55a212ef1092732a22%2F789683f4d8dc46d2807545b8f488ff5a?width=100 100w, https://cdn.builder.io/api/v1/image/assets%2F421683bafcd74f55a212ef1092732a22%2F789683f4d8dc46d2807545b8f488ff5a?width=200 200w, https://cdn.builder.io/api/v1/image/assets%2F421683bafcd74f55a212ef1092732a22%2F789683f4d8dc46d2807545b8f488ff5a?width=400 400w, https://cdn.builder.io/api/v1/image/assets%2F421683bafcd74f55a212ef1092732a22%2F789683f4d8dc46d2807545b8f488ff5a?width=800 800w, https://cdn.builder.io/api/v1/image/assets%2F421683bafcd74f55a212ef1092732a22%2F789683f4d8dc46d2807545b8f488ff5a?width=1200 1200w, https://cdn.builder.io/api/v1/image/assets%2F421683bafcd74f55a212ef1092732a22%2F789683f4d8dc46d2807545b8f488ff5a?width=1600 1600w, https://cdn.builder.io/api/v1/image/assets%2F421683bafcd74f55a212ef1092732a22%2F789683f4d8dc46d2807545b8f488ff5a?width=2000 2000w, https://cdn.builder.io/api/v1/image/assets%2F421683bafcd74f55a212ef1092732a22%2F789683f4d8dc46d2807545b8f488ff5a"
+            className="aspect-square object-cover object-center w-[109%] -ml-[1px] min-h-[20px] min-w-[20px] overflow-hidden max-w-[33px] cursor-pointer pointer-events-auto"
+            alt="User profile"
+          />
         </div>
       </div>
     </header>

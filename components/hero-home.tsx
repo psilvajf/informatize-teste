@@ -15,32 +15,31 @@ export default function HeroHome() {
               Transformando ideias em soluções digitais
             </h1>
             <div className="mx-auto max-w-3xl">
-              <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
+              <div className="mx-auto flex max-w-xs justify-center sm:max-w-none">
                 <div data-aos="fade-up" data-aos-delay={400}></div>
                 <div data-aos="fade-up" data-aos-delay={600}></div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col mt-5 relative w-full">
-            <div className="relative">
-              <div className="w-full paddingTop-78% pointer-events-none">
-                <div className="flex flex-col relative mt-5 min-h-5 min-w-5 w-full">
-                  <div className="relative">
+          <div className="relative mt-5 flex w-full flex-col">
+            <div className="relative self-stretch max-w-[500px]">
+              <div className="w-full pointer-events-none">
+                <div className="relative flex flex-col mt-5 min-h-5 min-w-5 pointer-events-none w-full">
+                  <div className="relative pointer-events-none">
                     <video
                       autoPlay
                       muted
-                      controls={false}
                       playsInline
                       loop
-                      className="w-full h-full object-cover object-center rounded-sm flex flex-col relative mt-5 min-h-5 min-w-5"
+                      className="flex rounded-sm flex-col h-full mt-5 min-h-5 min-w-5 object-cover pointer-events-none relative w-full"
                     >
                       <source
                         type="video/mp4"
                         src="https://cdn.builder.io/o/assets%2F421683bafcd74f55a212ef1092732a22%2Fad5be2fd3d884618ab04814aeacfe3c3%2Fcompressed?apiKey=421683bafcd74f55a212ef1092732a22&token=ad5be2fd3d884618ab04814aeacfe3c3&alt=media&optimized=true"
                       />
                     </video>
-                    <div className="w-full pt-[70.04048582995948%] pointer-events-none text-0"></div>
+                    <div className="pt-[70%] pointer-events-none w-full"></div>
                   </div>
                 </div>
               </div>
