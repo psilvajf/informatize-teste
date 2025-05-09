@@ -68,7 +68,15 @@ export default function HeroHome() {
                     fill="none"
                     className="block h-5 w-5 pointer-events-none overflow-hidden"
                   >
-                    {/* SVG path content would go here */}
+                    <path
+                      d="M16.85 9.342a1 1 0 0 1 0 1.316l-10 7a1 1 0 0 1-1.55-.835V3.177a1 1 0 0 1 1.55-.835l10 7Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M13.768 9.34a.5.5 0 0 1 0 .82l-6.5 4.5a.5.5 0 0 1-.768-.41v-9a.5.5 0 0 1 .768-.42l6.5 4.5Z"
+                      fill="currentColor"
+                      opacity=".32"
+                    />
                   </svg>
                 </span>
               </span>
